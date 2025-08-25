@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://h0o83tpajxhk"]
+
+[ext_resource type="PackedScene" uid="uid://bbh1hce1nelbl" path="res://nodes/ui/ducks.tscn" id="1_f76ae"]
+[ext_resource type="PackedScene" uid="uid://7hyi2qx5amha" path="res://nodes/ui/hand.tscn" id="1_k88wf"]
+[ext_resource type="PackedScene" uid="uid://xp8i7crn78jh" path="res://nodes/ui/enemies.tscn" id="2_08fhs"]
+
+[node name="Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Ducks" parent="." instance=ExtResource("1_f76ae")]
+layout_mode = 1
+
+[node name="Enemies" parent="." instance=ExtResource("2_08fhs")]
+layout_mode = 1
+
+[node name="Hand" parent="." instance=ExtResource("1_k88wf")]
+layout_mode = 2
+anchors_preset = 0

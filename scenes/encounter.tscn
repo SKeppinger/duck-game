@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://yqb3fl6kork5"]
+
+[ext_resource type="PackedScene" uid="uid://h0o83tpajxhk" path="res://nodes/ui/screen.tscn" id="1_lp88p"]
+
+[node name="Encounter" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Screen" parent="." instance=ExtResource("1_lp88p")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+grow_vertical = 0

@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://xp8i7crn78jh"]
+[gd_scene load_steps=5 format=3 uid="uid://bvjgxreadx4oh"]
 
-[ext_resource type="PackedScene" uid="uid://c241pyr5vv84s" path="res://nodes/enemies/enemy.tscn" id="1_wva0g"]
+[ext_resource type="PackedScene" uid="uid://c241pyr5vv84s" path="res://nodes/enemies/enemy.tscn" id="1_bmink"]
+[ext_resource type="PackedScene" uid="uid://b5fte4guwjmdo" path="res://nodes/enemies/boss.tscn" id="1_q56xi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_88ly5"]
 bg_color = Color(0.972549, 0.141176, 0.0901961, 0.2)
@@ -40,19 +41,7 @@ label_settings = SubResource("LabelSettings_88ly5")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Enemy1" parent="." instance=ExtResource("1_wva0g")]
-visible = false
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -500.0
-offset_top = 100.0
-offset_right = -300.0
-offset_bottom = 300.0
-grow_horizontal = 0
-
-[node name="Enemy2" parent="." instance=ExtResource("1_wva0g")]
+[node name="Boss" parent="." instance=ExtResource("1_q56xi")]
 visible = false
 layout_mode = 1
 anchors_preset = 6
@@ -60,35 +49,20 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -350.0
-offset_top = -100.0
-offset_right = -150.0
-offset_bottom = 100.0
+offset_left = -450.0
+offset_top = -250.0
+offset_right = 50.0
+offset_bottom = 250.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="Enemy3" parent="." instance=ExtResource("1_wva0g")]
-visible = false
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -200.0
-offset_top = -300.0
-offset_right = 0.0
-offset_bottom = -100.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="Minion1" parent="." instance=ExtResource("1_wva0g")]
+[node name="Minion1" parent="." instance=ExtResource("1_bmink")]
 visible = false
 layout_mode = 0
 offset_top = 100.0
 offset_bottom = 300.0
 
-[node name="Minion2" parent="." instance=ExtResource("1_wva0g")]
+[node name="Minion2" parent="." instance=ExtResource("1_bmink")]
 visible = false
 layout_mode = 1
 anchors_preset = 4
@@ -100,7 +74,7 @@ offset_right = 350.0
 offset_bottom = 125.0
 grow_vertical = 2
 
-[node name="Minion3" parent="." instance=ExtResource("1_wva0g")]
+[node name="Minion3" parent="." instance=ExtResource("1_bmink")]
 visible = false
 layout_mode = 1
 anchors_preset = 2

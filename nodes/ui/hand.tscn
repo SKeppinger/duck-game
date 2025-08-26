@@ -1,17 +1,134 @@
-[gd_scene load_steps=2 format=3 uid="uid://7hyi2qx5amha"]
+[gd_scene load_steps=5 format=3 uid="uid://7hyi2qx5amha"]
+
+[ext_resource type="PackedScene" uid="uid://c16sii687gjt1" path="res://nodes/cards/card.tscn" id="1_h8o05"]
+[ext_resource type="Script" uid="uid://cyu0nk6daocg3" path="res://scripts/hand.gd" id="1_po2ha"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_11g8w"]
 bg_color = Color(0.393086, 0.393086, 0.393085, 0.156863)
 
-[node name="Hand" type="Panel"]
+[sub_resource type="LabelSettings" id="LabelSettings_11g8w"]
+font_size = 48
+
+[node name="Hand" type="Panel" node_paths=PackedStringArray("cards_in_hand")]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -400.0
-offset_top = -200.0
-offset_right = 400.0
+offset_left = -550.0
+offset_top = -300.0
+offset_right = 650.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_11g8w")
+script = ExtResource("1_po2ha")
+cards_in_hand = [NodePath("Card1"), NodePath("Card2"), NodePath("Card3"), NodePath("Card4"), NodePath("Card5"), NodePath("Card6"), NodePath("Card7"), NodePath("Card8"), NodePath("Card9"), NodePath("Card10")]
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Hand"
+label_settings = SubResource("LabelSettings_11g8w")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Card1" parent="." instance=ExtResource("1_h8o05")]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 321.0
+offset_bottom = 448.0
+
+[node name="Card2" parent="." instance=ExtResource("1_h8o05")]
+layout_mode = 1
+offset_left = 101.0
+offset_right = 421.0
+offset_bottom = 448.0
+
+[node name="Card3" parent="." instance=ExtResource("1_h8o05")]
+layout_mode = 1
+offset_left = 201.0
+offset_right = 521.0
+offset_bottom = 448.0
+
+[node name="Card4" parent="." instance=ExtResource("1_h8o05")]
+layout_mode = 0
+offset_left = 301.0
+offset_right = 621.0
+offset_bottom = 448.0
+
+[node name="Card5" parent="." instance=ExtResource("1_h8o05")]
+layout_mode = 0
+offset_left = 401.0
+offset_right = 721.0
+offset_bottom = 448.0
+
+[node name="Card6" parent="." instance=ExtResource("1_h8o05")]
+layout_mode = 0
+offset_left = 501.0
+offset_right = 821.0
+offset_bottom = 448.0
+
+[node name="Card7" parent="." instance=ExtResource("1_h8o05")]
+layout_mode = 0
+offset_left = 601.0
+offset_right = 921.0
+offset_bottom = 448.0
+
+[node name="Card8" parent="." instance=ExtResource("1_h8o05")]
+layout_mode = 0
+offset_left = 701.0
+offset_right = 1021.0
+offset_bottom = 448.0
+
+[node name="Card9" parent="." instance=ExtResource("1_h8o05")]
+layout_mode = 0
+offset_left = 801.0
+offset_right = 1121.0
+offset_bottom = 448.0
+
+[node name="Card10" parent="." instance=ExtResource("1_h8o05")]
+layout_mode = 0
+offset_left = 901.0
+offset_right = 1221.0
+offset_bottom = 448.0
+
+[connection signal="hover" from="Card1" to="." method="_on_card_hover"]
+[connection signal="select" from="Card1" to="." method="_on_card_select"]
+[connection signal="unhover" from="Card1" to="." method="_on_card_unhover"]
+[connection signal="hover" from="Card2" to="." method="_on_card_hover"]
+[connection signal="select" from="Card2" to="." method="_on_card_select"]
+[connection signal="unhover" from="Card2" to="." method="_on_card_unhover"]
+[connection signal="hover" from="Card3" to="." method="_on_card_hover"]
+[connection signal="select" from="Card3" to="." method="_on_card_select"]
+[connection signal="unhover" from="Card3" to="." method="_on_card_unhover"]
+[connection signal="hover" from="Card4" to="." method="_on_card_hover"]
+[connection signal="select" from="Card4" to="." method="_on_card_select"]
+[connection signal="unhover" from="Card4" to="." method="_on_card_unhover"]
+[connection signal="hover" from="Card5" to="." method="_on_card_hover"]
+[connection signal="select" from="Card5" to="." method="_on_card_select"]
+[connection signal="unhover" from="Card5" to="." method="_on_card_unhover"]
+[connection signal="hover" from="Card6" to="." method="_on_card_hover"]
+[connection signal="select" from="Card6" to="." method="_on_card_select"]
+[connection signal="unhover" from="Card6" to="." method="_on_card_unhover"]
+[connection signal="hover" from="Card7" to="." method="_on_card_hover"]
+[connection signal="select" from="Card7" to="." method="_on_card_select"]
+[connection signal="unhover" from="Card7" to="." method="_on_card_unhover"]
+[connection signal="hover" from="Card8" to="." method="_on_card_hover"]
+[connection signal="select" from="Card8" to="." method="_on_card_select"]
+[connection signal="unhover" from="Card8" to="." method="_on_card_unhover"]
+[connection signal="hover" from="Card9" to="." method="_on_card_hover"]
+[connection signal="select" from="Card9" to="." method="_on_card_select"]
+[connection signal="unhover" from="Card9" to="." method="_on_card_unhover"]
+[connection signal="hover" from="Card10" to="." method="_on_card_hover"]
+[connection signal="select" from="Card10" to="." method="_on_card_select"]
+[connection signal="unhover" from="Card10" to="." method="_on_card_unhover"]

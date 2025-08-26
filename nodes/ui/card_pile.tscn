@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://41av77fatelo"]
+
+[node name="CardPile" type="Panel"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 215.0
+offset_top = -200.0
+offset_right = 390.0
+grow_vertical = 0

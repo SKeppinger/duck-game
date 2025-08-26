@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjts5r5ofiaca"]
+
+[ext_resource type="Texture2D" uid="uid://c420kvmehsw4x" path="res://assets/temporary/200x200.png" id="1_qvchw"]
+[ext_resource type="PackedScene" uid="uid://6svp7h6iym6i" path="res://nodes/ui/small_info.tscn" id="2_rvqa1"]
+
+[node name="Duck" type="TextureRect"]
+offset_right = 200.0
+offset_bottom = 200.0
+texture = ExtResource("1_qvchw")
+expand_mode = 1
+
+[node name="DuckInfo" parent="." instance=ExtResource("2_rvqa1")]
+z_index = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.2
+offset_top = -33.0001
+offset_right = 99.8002
+offset_bottom = -1.00006
+grow_horizontal = 2
+grow_vertical = 0

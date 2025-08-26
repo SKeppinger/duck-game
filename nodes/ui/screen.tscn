@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://h0o83tpajxhk"]
+[gd_scene load_steps=9 format=3 uid="uid://h0o83tpajxhk"]
 
 [ext_resource type="PackedScene" uid="uid://bbh1hce1nelbl" path="res://nodes/ui/ducks.tscn" id="1_f76ae"]
 [ext_resource type="PackedScene" uid="uid://7hyi2qx5amha" path="res://nodes/ui/hand.tscn" id="1_k88wf"]
 [ext_resource type="PackedScene" uid="uid://xp8i7crn78jh" path="res://nodes/ui/enemies.tscn" id="2_08fhs"]
+[ext_resource type="PackedScene" uid="uid://bvjgxreadx4oh" path="res://nodes/ui/enemies_boss.tscn" id="3_abm6n"]
+[ext_resource type="PackedScene" uid="uid://3uolxoau7w60" path="res://nodes/ui/mana.tscn" id="4_dvmco"]
+[ext_resource type="PackedScene" uid="uid://41av77fatelo" path="res://nodes/ui/card_pile.tscn" id="5_kivw1"]
+[ext_resource type="PackedScene" uid="uid://duoih8amrfxoa" path="res://nodes/ui/run_info.tscn" id="6_h3sjt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kivw1"]
+font_size = 48
 
 [node name="Screen" type="Control"]
 layout_mode = 3
@@ -12,11 +19,77 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="RunInfo" parent="." instance=ExtResource("6_h3sjt")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 0.0
+offset_right = 1920.0
+grow_horizontal = 1
+
 [node name="Ducks" parent="." instance=ExtResource("1_f76ae")]
 layout_mode = 1
 
 [node name="Enemies" parent="." instance=ExtResource("2_08fhs")]
 layout_mode = 1
+
+[node name="EnemiesBoss" parent="." instance=ExtResource("3_abm6n")]
+visible = false
+layout_mode = 1
+offset_left = -1073.0
+offset_right = -123.0
+
+[node name="Mana" parent="." instance=ExtResource("4_dvmco")]
+layout_mode = 1
+
+[node name="CardPile" parent="." instance=ExtResource("5_kivw1")]
+layout_mode = 1
+
+[node name="Label" type="Label" parent="CardPile"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Deck"
+label_settings = SubResource("LabelSettings_kivw1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardPile2" parent="." instance=ExtResource("5_kivw1")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -175.0
+offset_right = 0.0
+grow_horizontal = 0
+
+[node name="Label" type="Label" parent="CardPile2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Discard"
+label_settings = SubResource("LabelSettings_kivw1")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Hand" parent="." instance=ExtResource("1_k88wf")]
 layout_mode = 2

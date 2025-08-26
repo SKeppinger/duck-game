@@ -44,62 +44,61 @@ vertical_alignment = 1
 
 [node name="Card1" parent="." instance=ExtResource("1_h8o05")]
 layout_mode = 0
-offset_left = 1.0
-offset_right = 321.0
+offset_right = 320.0
 offset_bottom = 448.0
 
 [node name="Card2" parent="." instance=ExtResource("1_h8o05")]
 layout_mode = 1
-offset_left = 101.0
-offset_right = 421.0
+offset_left = 100.0
+offset_right = 420.0
 offset_bottom = 448.0
 
 [node name="Card3" parent="." instance=ExtResource("1_h8o05")]
 layout_mode = 1
-offset_left = 201.0
-offset_right = 521.0
+offset_left = 200.0
+offset_right = 520.0
 offset_bottom = 448.0
 
 [node name="Card4" parent="." instance=ExtResource("1_h8o05")]
 layout_mode = 0
-offset_left = 301.0
-offset_right = 621.0
+offset_left = 300.0
+offset_right = 620.0
 offset_bottom = 448.0
 
 [node name="Card5" parent="." instance=ExtResource("1_h8o05")]
 layout_mode = 0
-offset_left = 401.0
-offset_right = 721.0
+offset_left = 400.0
+offset_right = 720.0
 offset_bottom = 448.0
 
 [node name="Card6" parent="." instance=ExtResource("1_h8o05")]
 layout_mode = 0
-offset_left = 501.0
-offset_right = 821.0
+offset_left = 500.0
+offset_right = 820.0
 offset_bottom = 448.0
 
 [node name="Card7" parent="." instance=ExtResource("1_h8o05")]
 layout_mode = 0
-offset_left = 601.0
-offset_right = 921.0
+offset_left = 600.0
+offset_right = 920.0
 offset_bottom = 448.0
 
 [node name="Card8" parent="." instance=ExtResource("1_h8o05")]
 layout_mode = 0
-offset_left = 701.0
-offset_right = 1021.0
+offset_left = 700.0
+offset_right = 1020.0
 offset_bottom = 448.0
 
 [node name="Card9" parent="." instance=ExtResource("1_h8o05")]
 layout_mode = 0
-offset_left = 801.0
-offset_right = 1121.0
+offset_left = 800.0
+offset_right = 1120.0
 offset_bottom = 448.0
 
 [node name="Card10" parent="." instance=ExtResource("1_h8o05")]
 layout_mode = 0
-offset_left = 901.0
-offset_right = 1221.0
+offset_left = 900.0
+offset_right = 1220.0
 offset_bottom = 448.0
 
 [connection signal="hover" from="Card1" to="." method="_on_card_hover"]

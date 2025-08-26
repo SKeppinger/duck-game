@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdgn6q1o1f6xd"]
+
+[ext_resource type="Texture2D" uid="uid://c420kvmehsw4x" path="res://assets/temporary/200x200.png" id="1_7mtad"]
+[ext_resource type="Script" uid="uid://b6cc3q2ltqc65" path="res://scripts/duck.gd" id="2_jq6i4"]
+[ext_resource type="PackedScene" uid="uid://6svp7h6iym6i" path="res://nodes/ui/small_info.tscn" id="3_7yo35"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7mtad"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="Barbarian" type="TextureRect"]
+offset_right = 200.0
+offset_bottom = 200.0
+texture = ExtResource("1_7mtad")
+expand_mode = 1
+script = ExtResource("2_jq6i4")
+ATK = 3
+DEF = 5
+HP = 30
+duck_name = "Barbarian"
+type = 1
+
+[node name="DuckInfo" parent="." instance=ExtResource("3_7yo35")]
+z_index = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.2
+offset_top = -33.0001
+offset_right = 99.8002
+offset_bottom = -1.00006
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Name" type="Label" parent="DuckInfo"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -69.0001
+offset_top = -11.0
+offset_right = 67.9999
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Name"
+label_settings = SubResource("LabelSettings_7mtad")
+horizontal_alignment = 1
+vertical_alignment = 1

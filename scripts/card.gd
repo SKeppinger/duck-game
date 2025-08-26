@@ -5,12 +5,19 @@ class_name Card
 signal hover
 signal unhover
 
+## Exported Variables
+@export var card_name: String # The name of the card
+@export var target: References.TargetType # The card's target type
+
 ## Variables
 var selected = false # Whether the card is currently selected
 var shifted = 0 # How many times the card has been shifted to the right
 var rise_height = 30 # How high the card rises when hovered or selected
 var shift_distance = 125 # How far the card is shifted to the right
 
+## CARD MECHANICS
+
+## VISUALS AND MOUSE
 ## Shift right
 func shift_right():
 	if shifted < 2:

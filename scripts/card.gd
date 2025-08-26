@@ -8,7 +8,7 @@ signal unhover
 ## Variables
 var selected = false # Whether the card is currently selected
 var shifted = 0 # How many times the card has been shifted to the right
-var rise_height = 50 # How high the card rises when hovered or selected
+var rise_height = 30 # How high the card rises when hovered or selected
 var shift_distance = 125 # How far the card is shifted to the right
 
 ## Shift right

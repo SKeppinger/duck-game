@@ -1,10 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjts5r5ofiaca"]
+[gd_scene load_steps=6 format=3 uid="uid://bjts5r5ofiaca"]
 
 [ext_resource type="Texture2D" uid="uid://c420kvmehsw4x" path="res://assets/temporary/200x200.png" id="1_qvchw"]
 [ext_resource type="PackedScene" uid="uid://6svp7h6iym6i" path="res://nodes/ui/small_info.tscn" id="2_rvqa1"]
 [ext_resource type="Script" uid="uid://b6cc3q2ltqc65" path="res://scripts/duck.gd" id="2_wu6ej"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wu6ej"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_k8spr"]
+font_size = 12
 font_color = Color(0, 0, 0, 1)
 
 [node name="Duck" type="TextureRect"]
@@ -45,4 +49,22 @@ grow_vertical = 2
 text = "Name"
 label_settings = SubResource("LabelSettings_wu6ej")
 horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HP" type="Label" parent="DuckInfo"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -51.0002
+offset_top = -11.0
+offset_right = -11.0002
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "0/10"
+label_settings = SubResource("LabelSettings_k8spr")
+horizontal_alignment = 2
 vertical_alignment = 1

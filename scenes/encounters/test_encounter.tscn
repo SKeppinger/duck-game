@@ -1,31 +1,31 @@
-[gd_scene load_steps=12 format=3 uid="uid://h0o83tpajxhk"]
+[gd_scene load_steps=12 format=3 uid="uid://hkuhdy33ucwm"]
 
-[ext_resource type="PackedScene" uid="uid://duoih8amrfxoa" path="res://nodes/ui/run_info.tscn" id="1_2dnca"]
-[ext_resource type="Script" uid="uid://ctqsnaolrbnfo" path="res://scripts/encounter.gd" id="1_3l52i"]
-[ext_resource type="PackedScene" uid="uid://bbh1hce1nelbl" path="res://nodes/ui/ducks.tscn" id="2_3l52i"]
-[ext_resource type="PackedScene" uid="uid://cti1umoj003tf" path="res://nodes/enemies/test_enemy.tscn" id="2_nw3qf"]
-[ext_resource type="PackedScene" uid="uid://xp8i7crn78jh" path="res://nodes/ui/enemies.tscn" id="3_0kgoe"]
-[ext_resource type="PackedScene" uid="uid://bvjgxreadx4oh" path="res://nodes/ui/enemies_boss.tscn" id="4_nw3qf"]
-[ext_resource type="PackedScene" uid="uid://3uolxoau7w60" path="res://nodes/ui/mana.tscn" id="5_mw7nh"]
-[ext_resource type="PackedScene" uid="uid://41av77fatelo" path="res://nodes/ui/card_pile.tscn" id="6_ip0ee"]
-[ext_resource type="PackedScene" uid="uid://7hyi2qx5amha" path="res://nodes/ui/hand.tscn" id="7_se0eo"]
-[ext_resource type="PackedScene" uid="uid://c16sii687gjt1" path="res://nodes/cards/card.tscn" id="9_0kgoe"]
+[ext_resource type="Script" uid="uid://ctqsnaolrbnfo" path="res://scripts/encounter.gd" id="1_ereep"]
+[ext_resource type="PackedScene" uid="uid://duoih8amrfxoa" path="res://nodes/ui/run_info.tscn" id="2_5h4bo"]
+[ext_resource type="PackedScene" uid="uid://cti1umoj003tf" path="res://nodes/enemies/test_enemy.tscn" id="2_uoy0y"]
+[ext_resource type="PackedScene" uid="uid://bbh1hce1nelbl" path="res://nodes/ui/ducks.tscn" id="3_cqyvt"]
+[ext_resource type="PackedScene" uid="uid://xp8i7crn78jh" path="res://nodes/ui/enemies.tscn" id="4_2e58h"]
+[ext_resource type="PackedScene" uid="uid://bvjgxreadx4oh" path="res://nodes/ui/enemies_boss.tscn" id="5_uq71r"]
+[ext_resource type="PackedScene" uid="uid://3uolxoau7w60" path="res://nodes/ui/mana.tscn" id="6_tutbf"]
+[ext_resource type="PackedScene" uid="uid://41av77fatelo" path="res://nodes/ui/card_pile.tscn" id="7_56648"]
+[ext_resource type="PackedScene" uid="uid://7hyi2qx5amha" path="res://nodes/ui/hand.tscn" id="8_ugwrk"]
+[ext_resource type="PackedScene" uid="uid://c16sii687gjt1" path="res://nodes/cards/card.tscn" id="9_uh0lm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kivw1"]
 font_size = 48
 
-[node name="Encounter" type="Control" node_paths=PackedStringArray("encounter_deck")]
+[node name="Test_Encounter" type="Control" node_paths=PackedStringArray("encounter_deck")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_3l52i")
-enemies = Array[PackedScene]([ExtResource("2_nw3qf"), ExtResource("2_nw3qf"), ExtResource("2_nw3qf")])
+script = ExtResource("1_ereep")
+enemies = Array[PackedScene]([ExtResource("2_uoy0y"), ExtResource("2_uoy0y"), ExtResource("2_uoy0y")])
 encounter_deck = [NodePath("EncounterDeck/Card"), NodePath("EncounterDeck/Card2"), NodePath("EncounterDeck/Card3"), NodePath("EncounterDeck/Card4")]
 
-[node name="RunInfo" parent="." instance=ExtResource("1_2dnca")]
+[node name="RunInfo" parent="." instance=ExtResource("2_5h4bo")]
 layout_mode = 0
 anchors_preset = 0
 anchor_left = 0.0
@@ -34,22 +34,22 @@ offset_left = 0.0
 offset_right = 1920.0
 grow_horizontal = 1
 
-[node name="Ducks" parent="." instance=ExtResource("2_3l52i")]
+[node name="Ducks" parent="." instance=ExtResource("3_cqyvt")]
 layout_mode = 1
 
-[node name="Enemies" parent="." instance=ExtResource("3_0kgoe")]
+[node name="Enemies" parent="." instance=ExtResource("4_2e58h")]
 layout_mode = 1
 
-[node name="EnemiesBoss" parent="." instance=ExtResource("4_nw3qf")]
+[node name="EnemiesBoss" parent="." instance=ExtResource("5_uq71r")]
 visible = false
 layout_mode = 1
 offset_left = -1073.0
 offset_right = -123.0
 
-[node name="Mana" parent="." instance=ExtResource("5_mw7nh")]
+[node name="Mana" parent="." instance=ExtResource("6_tutbf")]
 layout_mode = 1
 
-[node name="CardPile" parent="." instance=ExtResource("6_ip0ee")]
+[node name="CardPile" parent="." instance=ExtResource("7_56648")]
 layout_mode = 1
 
 [node name="Label" type="Label" parent="CardPile"]
@@ -70,7 +70,7 @@ label_settings = SubResource("LabelSettings_kivw1")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CardPile2" parent="." instance=ExtResource("6_ip0ee")]
+[node name="CardPile2" parent="." instance=ExtResource("7_56648")]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -97,7 +97,7 @@ label_settings = SubResource("LabelSettings_kivw1")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Hand" parent="." instance=ExtResource("7_se0eo")]
+[node name="Hand" parent="." instance=ExtResource("8_ugwrk")]
 layout_mode = 2
 anchors_preset = 0
 
@@ -110,7 +110,7 @@ offset_left = -40.0
 offset_bottom = 40.0
 grow_horizontal = 0
 
-[node name="Card" parent="EncounterDeck" instance=ExtResource("9_0kgoe")]
+[node name="Card" parent="EncounterDeck" instance=ExtResource("9_uh0lm")]
 visible = false
 layout_mode = 1
 anchors_preset = 1
@@ -118,10 +118,11 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -240.0
 offset_right = 80.0
+offset_bottom = 448.0
 grow_horizontal = 0
 card_name = "Card 1"
 
-[node name="Card2" parent="EncounterDeck" instance=ExtResource("9_0kgoe")]
+[node name="Card2" parent="EncounterDeck" instance=ExtResource("9_uh0lm")]
 visible = false
 layout_mode = 1
 anchors_preset = 1
@@ -129,10 +130,11 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -240.0
 offset_right = 80.0
+offset_bottom = 448.0
 grow_horizontal = 0
 card_name = "Card 2"
 
-[node name="Card3" parent="EncounterDeck" instance=ExtResource("9_0kgoe")]
+[node name="Card3" parent="EncounterDeck" instance=ExtResource("9_uh0lm")]
 visible = false
 layout_mode = 1
 anchors_preset = 1
@@ -140,10 +142,11 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -240.0
 offset_right = 80.0
+offset_bottom = 448.0
 grow_horizontal = 0
 card_name = "Card 3"
 
-[node name="Card4" parent="EncounterDeck" instance=ExtResource("9_0kgoe")]
+[node name="Card4" parent="EncounterDeck" instance=ExtResource("9_uh0lm")]
 visible = false
 layout_mode = 1
 anchors_preset = 1
@@ -151,7 +154,6 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -240.0
 offset_right = 80.0
+offset_bottom = 448.0
 grow_horizontal = 0
 card_name = "Card 4"
-
-[editable path="Enemies"]

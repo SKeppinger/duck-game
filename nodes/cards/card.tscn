@@ -13,8 +13,10 @@ font_size = 24
 font_color = Color(0, 0, 0, 1)
 
 [node name="Card" type="TextureRect"]
-scale = Vector2(0.75, 0.75)
+offset_right = 320.0
+offset_bottom = 448.0
 texture = ExtResource("1_r8fj6")
+stretch_mode = 4
 script = ExtResource("2_1ftn1")
 card_name = "Card Name"
 

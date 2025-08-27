@@ -2,7 +2,7 @@ extends Control
 class_name Encounter
 
 ## Exported Variables
-@export var enemies: Array[Enemy] # The enemies in the encounter
+@export var enemies: Array[PackedScene] # The enemies in the encounter
 @export var encounter_deck: Array[Card] # The encounter deck
 @export var boss_encounter = false # Whether this is a boss encounter
 
@@ -22,8 +22,12 @@ var minions: Array[Enemy] # Summoned minions
 ## Create an encounter
 func _ready():
 	# Show enemies
+	var enemy_count = 0
 	for enemy in enemies:
-		enemy.visible = true
+		var enemy_instance = enemy.instantiate()
+		enemy_count += 1
+		enemy_box.add_child(enemy_instance)
+		enemy_instance.position = enemy_box.get_node("Enemy" + str(enemy_count)).position
 	# Shuffle encounter deck
 	encounter_deck.shuffle()
 

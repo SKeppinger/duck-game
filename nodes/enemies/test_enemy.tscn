@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cti1umoj003tf"]
 
-[ext_resource type="Texture2D" uid="uid://c420kvmehsw4x" path="res://assets/temporary/200x200.png" id="1_8i3k6"]
+[ext_resource type="Texture2D" uid="uid://brdpu33h0dsib" path="res://assets/enemies/rat.PNG" id="1_8i3k6"]
 [ext_resource type="Script" uid="uid://dv2kfhb1jru78" path="res://scripts/enemy.gd" id="2_dys3o"]
 [ext_resource type="PackedScene" uid="uid://6svp7h6iym6i" path="res://nodes/ui/small_info.tscn" id="3_ny1mb"]
 

@@ -1,9 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://7hyi2qx5amha"]
+[gd_scene load_steps=2 format=3 uid="uid://7hyi2qx5amha"]
 
-[ext_resource type="PackedScene" uid="uid://c16sii687gjt1" path="res://nodes/cards/card.tscn" id="1_h8o05"]
 [ext_resource type="Script" uid="uid://cyu0nk6daocg3" path="res://scripts/hand.gd" id="1_po2ha"]
 
-[node name="Hand" type="Control" node_paths=PackedStringArray("cards_in_hand")]
+[node name="Hand" type="Control"]
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
@@ -18,7 +17,6 @@ grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.75, 0.75)
 script = ExtResource("1_po2ha")
-cards_in_hand = [NodePath("Cards/Card"), NodePath("Cards/Card2"), NodePath("Cards/Card3"), NodePath("Cards/Card4"), NodePath("Cards/Card5")]
 
 [node name="Cards" type="HFlowContainer" parent="."]
 layout_mode = 1
@@ -28,20 +26,3 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
-
-[node name="Card" parent="Cards" instance=ExtResource("1_h8o05")]
-custom_minimum_size = Vector2(240, 336)
-layout_mode = 2
-stretch_mode = 2
-
-[node name="Card2" parent="Cards" instance=ExtResource("1_h8o05")]
-layout_mode = 2
-
-[node name="Card3" parent="Cards" instance=ExtResource("1_h8o05")]
-layout_mode = 2
-
-[node name="Card4" parent="Cards" instance=ExtResource("1_h8o05")]
-layout_mode = 2
-
-[node name="Card5" parent="Cards" instance=ExtResource("1_h8o05")]
-layout_mode = 2

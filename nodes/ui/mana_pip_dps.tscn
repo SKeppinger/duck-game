@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpyyckmfch2et"]
+
+[ext_resource type="Texture2D" uid="uid://b6nen2hwg00wm" path="res://assets/icons/manaicon_dps.png" id="1_nfsho"]
+[ext_resource type="Script" uid="uid://c0rko3mqioh8v" path="res://scripts/mana_pip.gd" id="2_nb2je"]
+
+[node name="ManaPipDPS" type="TextureRect"]
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("1_nfsho")
+script = ExtResource("2_nb2je")

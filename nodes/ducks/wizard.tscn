@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c5exuhggdhxa8"]
+[gd_scene load_steps=7 format=3 uid="uid://c5exuhggdhxa8"]
 
-[ext_resource type="Texture2D" uid="uid://c420kvmehsw4x" path="res://assets/temporary/200x200.png" id="1_wf811"]
+[ext_resource type="Texture2D" uid="uid://cnka33v0kqs4q" path="res://assets/duckcharacters/wizard.PNG" id="1_wf811"]
 [ext_resource type="Script" uid="uid://b6cc3q2ltqc65" path="res://scripts/duck.gd" id="2_iamg2"]
 [ext_resource type="PackedScene" uid="uid://6svp7h6iym6i" path="res://nodes/ui/small_info.tscn" id="3_fu6yr"]
+[ext_resource type="PackedScene" uid="uid://cpyyckmfch2et" path="res://nodes/ui/mana_pip_dps.tscn" id="3_iamg2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wf811"]
 font_color = Color(0, 0, 0, 1)
@@ -16,11 +17,13 @@ offset_right = 200.0
 offset_bottom = 200.0
 texture = ExtResource("1_wf811")
 expand_mode = 1
+flip_h = true
 script = ExtResource("2_iamg2")
 ATK = 5
 DEF = 1
 HP = 15
 duck_name = "Wizard"
+mana_generated = ExtResource("3_iamg2")
 
 [node name="DuckInfo" parent="." instance=ExtResource("3_fu6yr")]
 z_index = 1

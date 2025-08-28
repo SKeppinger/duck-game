@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://clc357efiavjv"]
+
+[ext_resource type="Texture2D" uid="uid://cci6560f8m4hr" path="res://assets/icons/manaicon_neutral.png" id="1_vsx4s"]
+[ext_resource type="Script" uid="uid://c0rko3mqioh8v" path="res://scripts/mana_pip.gd" id="2_a6y1r"]
+
+[node name="ManaPipNeutral" type="TextureRect"]
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("1_vsx4s")
+script = ExtResource("2_a6y1r")
+color = 3

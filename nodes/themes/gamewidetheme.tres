@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://b8y45r78rkna5"]
+
+[ext_resource type="FontFile" uid="uid://c5hleor34rqxb" path="res://assets/Fonts/Wizard.ttf" id="1_afxj6"]
+
+[resource]
+default_font = ExtResource("1_afxj6")

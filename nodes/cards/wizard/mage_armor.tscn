@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bav1o5hfyw443"]
 
 [ext_resource type="Texture2D" uid="uid://c5o3wmsfp7xve" path="res://assets/icons/cardframe_dps.png" id="1_kfw6h"]
-[ext_resource type="Script" uid="uid://cho0l1ekgerv2" path="res://scripts/card.gd" id="2_sf02f"]
+[ext_resource type="Script" uid="uid://dywbu1uykxgpx" path="res://scripts/add_effect_target.gd" id="2_kfw6h"]
 [ext_resource type="Texture2D" uid="uid://b6nen2hwg00wm" path="res://assets/icons/manaicon_dps.png" id="3_t2wrl"]
 [ext_resource type="Texture2D" uid="uid://bp6mkn7yuqvdu" path="res://assets/temporary/64x64.png" id="4_kjbhi"]
 
@@ -22,7 +22,7 @@ offset_right = 320.0
 offset_bottom = 448.0
 texture = ExtResource("1_kfw6h")
 stretch_mode = 4
-script = ExtResource("2_sf02f")
+script = ExtResource("2_kfw6h")
 card_name = "Mage Armor"
 cost = 2
 target = 1

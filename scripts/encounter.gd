@@ -34,6 +34,7 @@ var minions: Array[Enemy] # Summoned minions
 var action_phase_started = false # Whether the action phase has been started
 var target_phase_started = false # Whether the target phase has been started
 var attacker = null # The current attacker
+var caster = null # The current caster
 var current_card = null # The current card being played
 
 ## Process (Main Gameplay Loop)
@@ -80,7 +81,9 @@ func _process(_delta):
 							enemy.start_target_phase()
 						target_phase_started = true
 					References.TargetType.Duck:
-						pass
+						for duck in ducks:
+							duck.start_target_phase()
+						target_phase_started = true
 		# End of player turn
 		states.EndPlayer:
 			action_phase_started = false
@@ -134,6 +137,10 @@ func init_player(sent_ducks, sent_deck):
 	for card in sent_deck.get_children():
 		player_deck.append(card)
 		card.dropped.connect(dropped)
+		if card is DamageAll:
+			card.damage_all.connect(damage_all)
+			if card is Fireball:
+				card.damage_all_ducks.connect(damage_all_ducks)
 	player_deck.shuffle()
 
 ## Draw Cards
@@ -151,12 +158,7 @@ func draw(num):
 ## Dropped Card
 func dropped(card):
 	if state == states.PlayerAction and play_area.get_rect().has_point(get_global_mouse_position()):
-		if card.target == References.TargetType.None:
-			play(card)
-		else:
-			current_card = card
-			card.visible = false
-			state = states.PlayerCardTarget
+		play(card)
 	else:
 		card.get_parent().remove_child(card)
 		hand.add_child(card)
@@ -177,12 +179,25 @@ func play(card):
 		if cost_met < card.cost:
 			card.get_parent().remove_child(card)
 			hand.add_child(card)
+			caster = null
 			return
 	# Continue if the player has enough mana to play the card
 	for color in mana_to_pay:
 		remove_mana(color)
-	## TODO: Card effects
-	discard(card)
+	if card.target == References.TargetType.None:
+		if card is AddEffectSelf:
+			for duck in ducks:
+				if duck.mana_color == card.color:
+					caster = duck ## TEMPORARY TODO: in future, this has to be matched to the exact duck, not just the color
+			card.do_effect(caster)
+			caster = null
+		else:
+			card.do_effect()
+		discard(card)
+	else:
+		current_card = card
+		card.visible = false
+		state = states.PlayerCardTarget
 
 ## Discard Card
 func discard(card):
@@ -228,6 +243,16 @@ func empty_mana():
 		player_mana.pop_front()
 	mana_box.update_display(player_mana)
 
+## Damage All
+func damage_all(damage, reducible):
+	for enemy in enemies:
+		enemy.damage(damage, reducible)
+
+## Damage All Ducks
+func damage_all_ducks(damage, reducible):
+	for duck in ducks:
+		duck.damage(damage, reducible)
+
 ## On Duck Attack
 func _on_duck_attack(duck):
 	if state == states.PlayerAction:
@@ -250,6 +275,19 @@ func _on_enemy_targeted(enemy):
 		current_card = null
 		target_phase_started = false
 		state = states.PlayerAction
+	for e in enemies:
+		e.end_target_phase()
+
+## On Duck Targeted
+func _on_duck_targeted(duck):
+	if state == states.PlayerCardTarget:
+		current_card.do_effect(duck)
+		discard(current_card)
+		current_card = null
+		target_phase_started = false
+		state = states.PlayerAction
+	for d in ducks:
+		d.end_target_phase()
 
 ## On End Turn
 func _on_end_turn():

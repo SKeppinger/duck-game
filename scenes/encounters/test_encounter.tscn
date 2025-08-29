@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://hkuhdy33ucwm"]
+[gd_scene load_steps=15 format=3 uid="uid://hkuhdy33ucwm"]
 
 [ext_resource type="Script" uid="uid://ctqsnaolrbnfo" path="res://scripts/encounter.gd" id="1_ereep"]
 [ext_resource type="PackedScene" uid="uid://duoih8amrfxoa" path="res://nodes/ui/run_info.tscn" id="2_5h4bo"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bbh1hce1nelbl" path="res://nodes/ui/ducks.tscn" id="3_cqyvt"]
 [ext_resource type="PackedScene" uid="uid://clc357efiavjv" path="res://nodes/ui/mana_pip_neutral.tscn" id="3_dylcq"]
 [ext_resource type="PackedScene" uid="uid://xp8i7crn78jh" path="res://nodes/ui/enemies.tscn" id="4_2e58h"]
+[ext_resource type="Texture2D" uid="uid://k1k6ble32ko8" path="res://assets/backgrounds/test.png" id="4_nytid"]
 [ext_resource type="PackedScene" uid="uid://bvjgxreadx4oh" path="res://nodes/ui/enemies_boss.tscn" id="5_uq71r"]
 [ext_resource type="PackedScene" uid="uid://3uolxoau7w60" path="res://nodes/ui/mana.tscn" id="6_tutbf"]
 [ext_resource type="PackedScene" uid="uid://41av77fatelo" path="res://nodes/ui/card_pile.tscn" id="7_56648"]
@@ -26,6 +27,20 @@ grow_vertical = 2
 script = ExtResource("1_ereep")
 enemy_scenes = Array[PackedScene]([ExtResource("2_uoy0y"), ExtResource("2_uoy0y"), ExtResource("2_uoy0y")])
 neutral_mana = ExtResource("3_dylcq")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -980.0
+offset_right = 960.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("4_nytid")
 
 [node name="RunInfo" parent="." instance=ExtResource("2_5h4bo")]
 layout_mode = 0
@@ -192,8 +207,11 @@ card_name = "Card 4"
 [node name="ManaPips" type="Node" parent="."]
 
 [connection signal="attack" from="Ducks/Duck1" to="." method="_on_duck_attack"]
+[connection signal="targeted" from="Ducks/Duck1" to="." method="_on_duck_targeted"]
 [connection signal="attack" from="Ducks/Duck2" to="." method="_on_duck_attack"]
+[connection signal="targeted" from="Ducks/Duck2" to="." method="_on_duck_targeted"]
 [connection signal="attack" from="Ducks/Duck3" to="." method="_on_duck_attack"]
+[connection signal="targeted" from="Ducks/Duck3" to="." method="_on_duck_targeted"]
 [connection signal="targeted" from="Enemies/Enemy1" to="." method="_on_enemy_targeted"]
 [connection signal="targeted" from="Enemies/Enemy2" to="." method="_on_enemy_targeted"]
 [connection signal="targeted" from="Enemies/Enemy3" to="." method="_on_enemy_targeted"]

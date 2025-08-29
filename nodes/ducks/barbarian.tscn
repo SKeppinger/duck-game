@@ -36,6 +36,7 @@ DEF = 5
 HP = 30
 duck_name = "Barbarian"
 type = 1
+mana_color = 1
 mana_generated = ExtResource("3_jq6i4")
 
 [node name="Tapped" type="Label" parent="."]
@@ -201,4 +202,5 @@ text = "0"
 label_settings = SubResource("LabelSettings_mntci")
 horizontal_alignment = 1
 
+[connection signal="gui_input" from="." to="." method="_on_click"]
 [connection signal="gui_input" from="Attack" to="." method="_on_attack_clicked"]

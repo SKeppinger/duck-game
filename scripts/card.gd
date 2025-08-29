@@ -22,7 +22,7 @@ var shift_distance = 125 # How far the card is shifted to the right
 
 ## CARD MECHANICS
 ## Do Effect - this function will be overridden by the card's child class
-func do_effect(target=null):
+func do_effect(_card_target=null):
 	pass
 
 ## VISUALS AND MOUSE

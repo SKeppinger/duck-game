@@ -24,7 +24,7 @@ var HP_actual = HP # The enemy's current HP
 signal targeted # A signal to send when the enemy is clicked
 signal died # A signal to send when the enemy dies
 var can_target = false # Whether the enemy can currently be targeted
-var effects: Array[Effect] # The enemy's currently active upgrades, debuffs, and other effects
+var effects: Array[References.Effect] # The enemy's currently active buffs and debuffs
 
 ## Initial Setup
 func _ready():
@@ -38,14 +38,17 @@ func _on_click(event):
 			targeted.emit(self)
 
 ## Attack Target
-func attack_target(target):
-	pass
+func attack_target(target, reducible=true):
+	target.damage(ATK_actual, reducible)
 
 ## Damage
 func damage(dmg, reducible=true):
 	if reducible:
 		dmg -= DEF_actual
 	if dmg > 0:
+		if References.Effect.Shield in effects:
+			effects.erase(References.Effect.Shield)
+			return
 		HP_actual -= dmg
 	if HP_actual <= 0:
 		die()

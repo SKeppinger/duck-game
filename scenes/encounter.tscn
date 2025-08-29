@@ -191,8 +191,11 @@ card_name = "Card 4"
 [node name="ManaPips" type="Node" parent="."]
 
 [connection signal="attack" from="Ducks/Duck1" to="." method="_on_duck_attack"]
+[connection signal="targeted" from="Ducks/Duck1" to="." method="_on_duck_targeted"]
 [connection signal="attack" from="Ducks/Duck2" to="." method="_on_duck_attack"]
+[connection signal="targeted" from="Ducks/Duck2" to="." method="_on_duck_targeted"]
 [connection signal="attack" from="Ducks/Duck3" to="." method="_on_duck_attack"]
+[connection signal="targeted" from="Ducks/Duck3" to="." method="_on_duck_targeted"]
 [connection signal="targeted" from="Enemies/Enemy1" to="." method="_on_enemy_targeted"]
 [connection signal="targeted" from="Enemies/Enemy2" to="." method="_on_enemy_targeted"]
 [connection signal="targeted" from="Enemies/Enemy3" to="." method="_on_enemy_targeted"]

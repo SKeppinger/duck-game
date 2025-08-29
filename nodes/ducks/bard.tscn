@@ -36,6 +36,7 @@ DEF = 2
 HP = 20
 duck_name = "Bard"
 type = 2
+mana_color = 2
 mana_generated = ExtResource("3_s124q")
 
 [node name="Tapped" type="Label" parent="."]
@@ -201,4 +202,5 @@ text = "0"
 label_settings = SubResource("LabelSettings_yro8k")
 horizontal_alignment = 1
 
+[connection signal="gui_input" from="." to="." method="_on_click"]
 [connection signal="gui_input" from="Attack" to="." method="_on_attack_clicked"]

@@ -4,6 +4,8 @@ class_name Enemy
 ## Child References
 @onready var name_label = $EnemyInfo/Name
 @onready var hp_label = $EnemyInfo/HP
+@onready var atk_label = $Attack/Num
+@onready var def_label = $Defense/Num
 
 ## Stats
 @export var ATK: int # The enemy's attack stat
@@ -19,13 +21,50 @@ var DEF_actual = DEF # The enemy's current defense stat
 var HP_actual = HP # The enemy's current HP
 
 ## Other
+signal targeted # A signal to send when the enemy is clicked
+signal died # A signal to send when the enemy dies
+var can_target = false # Whether the enemy can currently be targeted
 var effects: Array[Effect] # The enemy's currently active upgrades, debuffs, and other effects
 
 ## Initial Setup
 func _ready():
 	reset_stats()
-	name_label.text = enemy_name
-	hp_label.text = str(HP_actual) + "/" + str(HP)
+	update_labels()
+
+## On Click
+func _on_click(event):
+	if event.is_action_pressed("click"):
+		if can_target:
+			targeted.emit(self)
+
+## Attack Target
+func attack_target(target):
+	pass
+
+## Damage
+func damage(dmg, reducible=true):
+	if reducible:
+		dmg -= DEF_actual
+	if dmg > 0:
+		HP_actual -= dmg
+	if HP_actual <= 0:
+		die()
+	update_labels()
+
+## Die
+func die():
+	visible = false
+	died.emit(self)
+
+## Start Target Phase
+func start_target_phase():
+	can_target = true
+	mouse_default_cursor_shape = CursorShape.CURSOR_POINTING_HAND
+
+## End Target Phase
+func end_target_phase():
+	can_target = false
+	mouse_default_cursor_shape = CursorShape.CURSOR_ARROW
 
 ## Reset Stats
 func reset_stats():
@@ -44,3 +83,10 @@ func reset_DEF():
 ## Reset HP
 func reset_HP():
 	HP_actual = HP
+
+## Update Labels
+func update_labels():
+	name_label.text = enemy_name
+	hp_label.text = str(HP_actual) + "/" + str(HP)
+	atk_label.text = str(ATK_actual)
+	def_label.text = str(DEF_actual)

@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://c5exuhggdhxa8" path="res://nodes/ducks/wizard.tscn" id="3_ipu61"]
 [ext_resource type="PackedScene" uid="uid://bdgn6q1o1f6xd" path="res://nodes/ducks/barbarian.tscn" id="4_ygxny"]
 [ext_resource type="PackedScene" uid="uid://cgliuh4ml3cgr" path="res://nodes/ducks/bard.tscn" id="5_wi4c7"]
-[ext_resource type="PackedScene" uid="uid://bukopaeam3g1i" path="res://nodes/cards/barbarian/test_barbarian_card.tscn" id="6_70vka"]
-[ext_resource type="PackedScene" uid="uid://dfx6g58lib8y7" path="res://nodes/cards/bard/test_bard_card.tscn" id="7_2l77h"]
-[ext_resource type="PackedScene" uid="uid://c7sk284gqw4yb" path="res://nodes/cards/wizard/test_wizard_card.tscn" id="8_nqdth"]
+[ext_resource type="PackedScene" uid="uid://dy0esukimc0bn" path="res://nodes/cards/wizard/magic_missile.tscn" id="7_wi4c7"]
+[ext_resource type="PackedScene" uid="uid://bav1o5hfyw443" path="res://nodes/cards/wizard/mage_armor.tscn" id="8_70vka"]
+[ext_resource type="PackedScene" uid="uid://bpk7wn42is87d" path="res://nodes/cards/wizard/fireball.tscn" id="9_2l77h"]
 
 [node name="MainGame" type="Control" node_paths=PackedStringArray("ducks")]
 layout_mode = 3
@@ -34,29 +34,11 @@ layout_mode = 0
 
 [node name="Deck" type="Node" parent="."]
 
-[node name="TestBarbarianCard" parent="Deck" instance=ExtResource("6_70vka")]
+[node name="MagicMissile" parent="Deck" instance=ExtResource("7_wi4c7")]
 visible = false
 
-[node name="TestBarbarianCard2" parent="Deck" instance=ExtResource("6_70vka")]
+[node name="MageArmor" parent="Deck" instance=ExtResource("8_70vka")]
 visible = false
 
-[node name="TestBarbarianCard3" parent="Deck" instance=ExtResource("6_70vka")]
-visible = false
-
-[node name="BardCard" parent="Deck" instance=ExtResource("7_2l77h")]
-visible = false
-
-[node name="BardCard2" parent="Deck" instance=ExtResource("7_2l77h")]
-visible = false
-
-[node name="BardCard3" parent="Deck" instance=ExtResource("7_2l77h")]
-visible = false
-
-[node name="WizardCard" parent="Deck" instance=ExtResource("8_nqdth")]
-visible = false
-
-[node name="WizardCard2" parent="Deck" instance=ExtResource("8_nqdth")]
-visible = false
-
-[node name="WizardCard3" parent="Deck" instance=ExtResource("8_nqdth")]
+[node name="Fireball" parent="Deck" instance=ExtResource("9_2l77h")]
 visible = false

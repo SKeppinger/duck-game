@@ -1,14 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://c241pyr5vv84s"]
+[gd_scene load_steps=9 format=3 uid="uid://c241pyr5vv84s"]
 
 [ext_resource type="Texture2D" uid="uid://c420kvmehsw4x" path="res://assets/temporary/200x200.png" id="1_u3p5i"]
 [ext_resource type="PackedScene" uid="uid://6svp7h6iym6i" path="res://nodes/ui/small_info.tscn" id="2_5wpj0"]
 [ext_resource type="Script" uid="uid://dv2kfhb1jru78" path="res://scripts/enemy.gd" id="2_ywbfa"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_ywbfa"]
-font_color = Color(0, 0, 0, 1)
+[ext_resource type="Texture2D" uid="uid://bp6mkn7yuqvdu" path="res://assets/temporary/64x64.png" id="4_rih5s"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rih5s"]
 font_size = 12
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rbcqw"]
+font_size = 10
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_j22ad"]
+font_size = 8
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ciylv"]
 font_color = Color(0, 0, 0, 1)
 
 [node name="Enemy" type="TextureRect"]
@@ -26,12 +35,13 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -100.2
-offset_top = -33.0001
-offset_right = 99.8002
-offset_bottom = -1.00006
+offset_left = -78.0
+offset_top = -26.0
+offset_right = 78.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 0
+expand_mode = 1
 
 [node name="Name" type="Label" parent="EnemyInfo"]
 layout_mode = 1
@@ -40,14 +50,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+offset_left = -69.0
+offset_top = -10.5
+offset_right = 68.0
+offset_bottom = 10.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Name"
-label_settings = SubResource("LabelSettings_ywbfa")
+label_settings = SubResource("LabelSettings_rih5s")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -58,13 +68,101 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -51.0002
-offset_top = -11.0
-offset_right = -11.0002
-offset_bottom = 12.0
+offset_left = -51.0
+offset_top = -10.5
+offset_right = -11.0
+offset_bottom = 11.5
 grow_horizontal = 0
 grow_vertical = 2
 text = "0/10"
-label_settings = SubResource("LabelSettings_rih5s")
+label_settings = SubResource("LabelSettings_rbcqw")
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="Attack" type="TextureRect" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = 1.0
+offset_right = 54.0
+offset_bottom = 33.0
+grow_vertical = 0
+texture = ExtResource("4_rih5s")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Attack"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -21.0
+offset_right = 21.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "ATK"
+label_settings = SubResource("LabelSettings_j22ad")
+horizontal_alignment = 1
+
+[node name="Num" type="Label" parent="Attack"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "0"
+label_settings = SubResource("LabelSettings_ciylv")
+horizontal_alignment = 1
+
+[node name="Defense" type="TextureRect" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 56.0
+offset_top = 1.0
+offset_right = 88.0
+offset_bottom = 33.0
+grow_vertical = 0
+texture = ExtResource("4_rih5s")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Defense"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -21.0
+offset_right = 21.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "DEF"
+label_settings = SubResource("LabelSettings_j22ad")
+horizontal_alignment = 1
+
+[node name="Num" type="Label" parent="Defense"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "0"
+label_settings = SubResource("LabelSettings_ciylv")
+horizontal_alignment = 1
+
+[connection signal="gui_input" from="." to="." method="_on_click"]

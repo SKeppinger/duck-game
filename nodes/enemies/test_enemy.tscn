@@ -1,14 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://cti1umoj003tf"]
+[gd_scene load_steps=9 format=3 uid="uid://cti1umoj003tf"]
 
 [ext_resource type="Texture2D" uid="uid://brdpu33h0dsib" path="res://assets/enemies/rat.PNG" id="1_8i3k6"]
 [ext_resource type="Script" uid="uid://dv2kfhb1jru78" path="res://scripts/enemy.gd" id="2_dys3o"]
 [ext_resource type="PackedScene" uid="uid://6svp7h6iym6i" path="res://nodes/ui/small_info.tscn" id="3_ny1mb"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_8i3k6"]
-font_color = Color(0, 0, 0, 1)
+[ext_resource type="Texture2D" uid="uid://bp6mkn7yuqvdu" path="res://assets/temporary/64x64.png" id="4_dys3o"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dys3o"]
 font_size = 12
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ny1mb"]
+font_size = 10
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xc5cr"]
+font_size = 8
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_a7ugc"]
 font_color = Color(0, 0, 0, 1)
 
 [node name="TestEnemy" type="TextureRect"]
@@ -17,8 +26,8 @@ offset_bottom = 200.0
 texture = ExtResource("1_8i3k6")
 expand_mode = 1
 script = ExtResource("2_dys3o")
-ATK = 4
-DEF = 4
+ATK = 2
+DEF = 2
 HP = 10
 enemy_name = "Test Enemy"
 
@@ -30,12 +39,13 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -100.2
-offset_top = -33.0001
-offset_right = 99.8002
-offset_bottom = -1.00006
+offset_left = -78.0
+offset_top = -26.0
+offset_right = 78.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 0
+expand_mode = 1
 
 [node name="Name" type="Label" parent="EnemyInfo"]
 layout_mode = 1
@@ -44,14 +54,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+offset_left = -69.0
+offset_top = -10.5
+offset_right = 68.0
+offset_bottom = 10.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Name"
-label_settings = SubResource("LabelSettings_8i3k6")
+label_settings = SubResource("LabelSettings_dys3o")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -62,13 +72,101 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -51.0002
-offset_top = -11.0
-offset_right = -11.0002
-offset_bottom = 12.0
+offset_left = -51.0
+offset_top = -10.5
+offset_right = -11.0
+offset_bottom = 11.5
 grow_horizontal = 0
 grow_vertical = 2
 text = "0/10"
-label_settings = SubResource("LabelSettings_dys3o")
+label_settings = SubResource("LabelSettings_ny1mb")
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="Attack" type="TextureRect" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = 1.0
+offset_right = 54.0
+offset_bottom = 33.0
+grow_vertical = 0
+texture = ExtResource("4_dys3o")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Attack"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -21.0
+offset_right = 21.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "ATK"
+label_settings = SubResource("LabelSettings_xc5cr")
+horizontal_alignment = 1
+
+[node name="Num" type="Label" parent="Attack"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "0"
+label_settings = SubResource("LabelSettings_a7ugc")
+horizontal_alignment = 1
+
+[node name="Defense" type="TextureRect" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 56.0
+offset_top = 1.0
+offset_right = 88.0
+offset_bottom = 33.0
+grow_vertical = 0
+texture = ExtResource("4_dys3o")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Defense"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -21.0
+offset_right = 21.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "DEF"
+label_settings = SubResource("LabelSettings_xc5cr")
+horizontal_alignment = 1
+
+[node name="Num" type="Label" parent="Defense"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "0"
+label_settings = SubResource("LabelSettings_a7ugc")
+horizontal_alignment = 1
+
+[connection signal="gui_input" from="." to="." method="_on_click"]

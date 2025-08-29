@@ -4,6 +4,11 @@ class_name Duck
 ## Child References
 @onready var name_label = $DuckInfo/Name
 @onready var hp_label = $DuckInfo/HP
+@onready var atk_icon = $Attack
+@onready var def_icon = $Defense
+@onready var atk_label = $Attack/Num
+@onready var def_label = $Defense/Num
+@onready var tapped_label = $Tapped
 
 ## Stats
 @export var ATK: int # The duck's attack stat
@@ -21,14 +26,74 @@ var DEF_actual: int # The duck's current defense stat
 var HP_actual: int # The duck's current HP
 
 ## Other
+signal attack # A signal to emit to the encounter script when the duck attacks
+signal died # A signal to emit when the duck dies
 var effects: Array[Effect] # The duck's currently active upgrades, debuffs, and other effects
+var can_attack = false # Whether the duck can currently attack
+var can_defend = false # Whether the duck can currently defend
 var tapped = false # Whether the duck is tapped
+
+## Process (tapped visuals)
+## TEMPORARY
+func _process(_delta):
+	if tapped:
+		tapped_label.visible = true
+	else:
+		tapped_label.visible = false
 
 ## Initial Setup
 func _ready():
 	reset_stats()
-	name_label.text = duck_name
-	hp_label.text = str(HP_actual) + "/" + str(HP)
+	update_labels()
+
+## Start Action Phase
+func start_action_phase():
+	if not tapped:
+		can_attack = true
+		atk_icon.mouse_default_cursor_shape = CursorShape.CURSOR_POINTING_HAND
+	else:
+		can_attack = false
+		atk_icon.mouse_default_cursor_shape = CursorShape.CURSOR_ARROW
+	print(can_attack)
+
+## End Action Phase
+func end_action_phase():
+	can_attack = false
+	atk_icon.mouse_default_cursor_shape = CursorShape.CURSOR_ARROW
+
+## Attack Clicked
+func _on_attack_clicked(event):
+	if event.is_action_pressed("click"):
+		if can_attack:
+			attack.emit(self)
+
+## Attack Target
+func attack_target(target, reducible=true):
+	target.damage(ATK_actual, reducible)
+	tapped = true
+
+## Damage
+func damage(dmg, reducible=true):
+	if reducible:
+		dmg -= DEF_actual
+	if dmg > 0:
+		HP_actual -= dmg
+	if HP_actual <= 0:
+		die()
+	update_labels()
+
+## Die
+func die():
+	visible = false
+	died.emit(self)
+
+## Tap
+func tap():
+	tapped = true
+
+## Untap
+func untap():
+	tapped = false
 
 ## Reset Stats
 func reset_stats():
@@ -48,6 +113,13 @@ func reset_DEF():
 func reset_HP():
 	HP_actual = HP
 
+## Update Labels
+func update_labels():
+	name_label.text = duck_name
+	hp_label.text = str(HP_actual) + "/" + str(HP)
+	atk_label.text = str(ATK_actual)
+	def_label.text = str(DEF_actual)
+
 ## Copy Duck
 func copy_duck(target_duck):
 	target_duck.ATK = ATK
@@ -58,9 +130,9 @@ func copy_duck(target_duck):
 	target_duck.HP_actual = HP_actual
 	target_duck.duck_name = duck_name
 	target_duck.type = type
+	target_duck.mana_generated = mana_generated
 	target_duck.effects = effects
 	target_duck.tapped = tapped
-	target_duck.name_label.text = duck_name
-	target_duck.hp_label.text = str(HP_actual) + "/" + str(HP)
 	target_duck.texture = texture
 	target_duck.flip_h = flip_h
+	target_duck.update_labels()

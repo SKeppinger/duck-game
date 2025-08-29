@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bukopaeam3g1i"]
+[gd_scene load_steps=8 format=3 uid="uid://bukopaeam3g1i"]
 
 [ext_resource type="Texture2D" uid="uid://ckf70y6colw2f" path="res://assets/icons/cardframe_tnk.png" id="1_oq8x3"]
 [ext_resource type="Script" uid="uid://cho0l1ekgerv2" path="res://scripts/card.gd" id="2_812sh"]
@@ -9,7 +9,11 @@
 font_size = 24
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_y3cwb"]
+[sub_resource type="LabelSettings" id="LabelSettings_p4li4"]
+font_size = 60
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_sty76"]
 font_size = 24
 font_color = Color(0, 0, 0, 1)
 
@@ -58,6 +62,24 @@ offset_bottom = 64.0
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("3_oofw6")
 
+[node name="Label" type="Label" parent="Cost/Amount"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+label_settings = SubResource("LabelSettings_p4li4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Description" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 7
@@ -68,11 +90,11 @@ anchor_bottom = 1.0
 offset_left = -139.0
 offset_top = -372.0
 offset_right = 139.0
-offset_bottom = -32.0
+offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Here is some text down here. This is what the card does."
-label_settings = SubResource("LabelSettings_y3cwb")
+label_settings = SubResource("LabelSettings_sty76")
 horizontal_alignment = 1
 vertical_alignment = 2
 autowrap_mode = 3

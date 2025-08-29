@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://duoih8amrfxoa" path="res://nodes/ui/run_info.tscn" id="1_2dnca"]
 [ext_resource type="Script" uid="uid://ctqsnaolrbnfo" path="res://scripts/encounter.gd" id="1_3l52i"]
 [ext_resource type="PackedScene" uid="uid://bbh1hce1nelbl" path="res://nodes/ui/ducks.tscn" id="2_3l52i"]
-[ext_resource type="PackedScene" uid="uid://cti1umoj003tf" path="res://nodes/enemies/test_enemy.tscn" id="2_nw3qf"]
 [ext_resource type="PackedScene" uid="uid://xp8i7crn78jh" path="res://nodes/ui/enemies.tscn" id="3_0kgoe"]
 [ext_resource type="PackedScene" uid="uid://clc357efiavjv" path="res://nodes/ui/mana_pip_neutral.tscn" id="3_mw7nh"]
 [ext_resource type="PackedScene" uid="uid://bvjgxreadx4oh" path="res://nodes/ui/enemies_boss.tscn" id="4_nw3qf"]
@@ -11,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://41av77fatelo" path="res://nodes/ui/card_pile.tscn" id="6_ip0ee"]
 [ext_resource type="PackedScene" uid="uid://7hyi2qx5amha" path="res://nodes/ui/hand.tscn" id="7_se0eo"]
 [ext_resource type="PackedScene" uid="uid://c16sii687gjt1" path="res://nodes/cards/card.tscn" id="9_0kgoe"]
+[ext_resource type="PackedScene" uid="uid://ebnsydu1akj8" path="res://nodes/ui/end_turn.tscn" id="9_mw7nh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kivw1"]
 font_size = 48
@@ -23,7 +23,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3l52i")
-enemies = Array[PackedScene]([ExtResource("2_nw3qf"), ExtResource("2_nw3qf"), ExtResource("2_nw3qf")])
 encounter_deck = [NodePath("EncounterDeck/Card"), NodePath("EncounterDeck/Card2"), NodePath("EncounterDeck/Card3"), NodePath("EncounterDeck/Card4")]
 neutral_mana = ExtResource("3_mw7nh")
 
@@ -38,6 +37,7 @@ grow_horizontal = 1
 
 [node name="Ducks" parent="." instance=ExtResource("2_3l52i")]
 layout_mode = 1
+mouse_filter = 2
 
 [node name="Enemies" parent="." instance=ExtResource("3_0kgoe")]
 layout_mode = 1
@@ -112,10 +112,28 @@ offset_right = 960.0
 offset_bottom = 240.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+
+[node name="EndTurn" parent="." instance=ExtResource("9_mw7nh")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -181.0
+offset_top = -208.0
+offset_right = 139.0
+offset_bottom = 240.0
+grow_horizontal = 0
+grow_vertical = 0
+expand_mode = 1
 
 [node name="Hand" parent="." instance=ExtResource("7_se0eo")]
 layout_mode = 2
 anchors_preset = 0
+offset_top = -293.0
+offset_bottom = 57.0
 
 [node name="EncounterDeck" type="Control" parent="."]
 layout_mode = 1
@@ -171,3 +189,17 @@ grow_horizontal = 0
 card_name = "Card 4"
 
 [node name="ManaPips" type="Node" parent="."]
+
+[connection signal="attack" from="Ducks/Duck1" to="." method="_on_duck_attack"]
+[connection signal="attack" from="Ducks/Duck2" to="." method="_on_duck_attack"]
+[connection signal="attack" from="Ducks/Duck3" to="." method="_on_duck_attack"]
+[connection signal="targeted" from="Enemies/Enemy1" to="." method="_on_enemy_targeted"]
+[connection signal="targeted" from="Enemies/Enemy2" to="." method="_on_enemy_targeted"]
+[connection signal="targeted" from="Enemies/Enemy3" to="." method="_on_enemy_targeted"]
+[connection signal="targeted" from="Enemies/Minion1" to="." method="_on_enemy_targeted"]
+[connection signal="targeted" from="Enemies/Minion2" to="." method="_on_enemy_targeted"]
+[connection signal="targeted" from="Enemies/Minion3" to="." method="_on_enemy_targeted"]
+[connection signal="end_player_turn" from="EndTurn" to="." method="_on_end_turn"]
+
+[editable path="Ducks"]
+[editable path="Enemies"]

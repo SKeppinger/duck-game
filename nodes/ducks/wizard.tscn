@@ -1,15 +1,27 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5exuhggdhxa8"]
+[gd_scene load_steps=11 format=3 uid="uid://c5exuhggdhxa8"]
 
 [ext_resource type="Texture2D" uid="uid://cnka33v0kqs4q" path="res://assets/duckcharacters/wizard.PNG" id="1_wf811"]
 [ext_resource type="Script" uid="uid://b6cc3q2ltqc65" path="res://scripts/duck.gd" id="2_iamg2"]
 [ext_resource type="PackedScene" uid="uid://6svp7h6iym6i" path="res://nodes/ui/small_info.tscn" id="3_fu6yr"]
 [ext_resource type="PackedScene" uid="uid://cpyyckmfch2et" path="res://nodes/ui/mana_pip_dps.tscn" id="3_iamg2"]
+[ext_resource type="Texture2D" uid="uid://bp6mkn7yuqvdu" path="res://assets/temporary/64x64.png" id="5_fu6yr"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_wf811"]
+[sub_resource type="LabelSettings" id="LabelSettings_byb6i"]
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_iamg2"]
+[sub_resource type="LabelSettings" id="LabelSettings_4fx8q"]
 font_size = 12
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xn613"]
+font_size = 10
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fu6yr"]
+font_size = 8
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_imwhu"]
 font_color = Color(0, 0, 0, 1)
 
 [node name="Wizard" type="TextureRect"]
@@ -25,6 +37,25 @@ HP = 15
 duck_name = "Wizard"
 mana_generated = ExtResource("3_iamg2")
 
+[node name="Tapped" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -78.0
+offset_top = -52.0
+offset_right = 78.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "TAPPED"
+label_settings = SubResource("LabelSettings_byb6i")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="DuckInfo" parent="." instance=ExtResource("3_fu6yr")]
 z_index = 1
 layout_mode = 1
@@ -33,12 +64,13 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -100.2
-offset_top = -33.0001
-offset_right = 99.8002
-offset_bottom = -1.00006
+offset_left = -78.0
+offset_top = -26.0
+offset_right = 78.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 0
+expand_mode = 1
 
 [node name="Name" type="Label" parent="DuckInfo"]
 layout_mode = 1
@@ -47,14 +79,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -69.0001
-offset_top = -11.0
-offset_right = 67.9999
-offset_bottom = 12.0
+offset_left = -69.0
+offset_top = -10.5
+offset_right = 68.0
+offset_bottom = 10.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Name"
-label_settings = SubResource("LabelSettings_wf811")
+label_settings = SubResource("LabelSettings_4fx8q")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -65,13 +97,107 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -51.0002
-offset_top = -11.0
-offset_right = -11.0002
-offset_bottom = 12.0
+offset_left = -51.0
+offset_top = -10.5
+offset_right = -11.0
+offset_bottom = 11.5
 grow_horizontal = 0
 grow_vertical = 2
 text = "0/10"
-label_settings = SubResource("LabelSettings_iamg2")
+label_settings = SubResource("LabelSettings_xn613")
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="Attack" type="TextureRect" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -55.0
+offset_top = 1.0
+offset_right = -23.0
+offset_bottom = 33.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("5_fu6yr")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Attack"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -21.0
+offset_right = 21.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "ATK"
+label_settings = SubResource("LabelSettings_fu6yr")
+horizontal_alignment = 1
+
+[node name="Num" type="Label" parent="Attack"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "0"
+label_settings = SubResource("LabelSettings_imwhu")
+horizontal_alignment = 1
+
+[node name="Defense" type="TextureRect" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -89.0
+offset_top = 1.0
+offset_right = -57.0
+offset_bottom = 33.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("5_fu6yr")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Defense"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -21.0
+offset_right = 21.0
+offset_bottom = 17.0
+grow_horizontal = 2
+text = "DEF"
+label_settings = SubResource("LabelSettings_fu6yr")
+horizontal_alignment = 1
+
+[node name="Num" type="Label" parent="Defense"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "0"
+label_settings = SubResource("LabelSettings_imwhu")
+horizontal_alignment = 1
+
+[connection signal="gui_input" from="Attack" to="." method="_on_attack_clicked"]

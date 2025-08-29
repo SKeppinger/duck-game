@@ -1,29 +1,32 @@
-[gd_scene load_steps=8 format=3 uid="uid://dfx6g58lib8y7"]
+[gd_scene load_steps=9 format=3 uid="uid://bpk7wn42is87d"]
 
-[ext_resource type="Texture2D" uid="uid://bfdhc2y4ql1ig" path="res://assets/icons/cardframe_sup.png" id="1_3xl88"]
-[ext_resource type="Script" uid="uid://cho0l1ekgerv2" path="res://scripts/card.gd" id="2_rhy3g"]
-[ext_resource type="Texture2D" uid="uid://bp6mkn7yuqvdu" path="res://assets/temporary/64x64.png" id="3_6vyff"]
-[ext_resource type="Texture2D" uid="uid://cwj7bda028070" path="res://assets/icons/manaicon_sup.png" id="3_g3qla"]
+[ext_resource type="Texture2D" uid="uid://c5o3wmsfp7xve" path="res://assets/icons/cardframe_dps.png" id="1_5av0c"]
+[ext_resource type="Script" uid="uid://cho0l1ekgerv2" path="res://scripts/card.gd" id="2_pmc48"]
+[ext_resource type="Texture2D" uid="uid://b6nen2hwg00wm" path="res://assets/icons/manaicon_dps.png" id="3_xb7qx"]
+[ext_resource type="Texture2D" uid="uid://bp6mkn7yuqvdu" path="res://assets/temporary/64x64.png" id="4_bc2q2"]
+[ext_resource type="Texture2D" uid="uid://ddfbb0snmihv0" path="res://assets/icons/art_fireball.png" id="5_pmc48"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_njcsl"]
 font_size = 24
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_g3qla"]
+[sub_resource type="LabelSettings" id="LabelSettings_3wvpt"]
 font_size = 60
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_0kxo8"]
-font_size = 24
+[sub_resource type="LabelSettings" id="LabelSettings_pmc48"]
+font_size = 22
 font_color = Color(0, 0, 0, 1)
 
-[node name="BardCard" type="TextureRect"]
+[node name="Fireball" type="TextureRect"]
 offset_right = 320.0
 offset_bottom = 448.0
-texture = ExtResource("1_3xl88")
+texture = ExtResource("1_5av0c")
 stretch_mode = 4
-script = ExtResource("2_rhy3g")
-card_name = "Card Name"
+script = ExtResource("2_pmc48")
+card_name = "Fireball!"
+cost = 3
+traits = Array[int]([0])
 
 [node name="Name" type="Label" parent="."]
 layout_mode = 1
@@ -35,7 +38,7 @@ offset_top = 30.0
 offset_right = 137.0
 offset_bottom = 68.0
 grow_horizontal = 2
-text = "Bard Card"
+text = "Fireball!"
 label_settings = SubResource("LabelSettings_njcsl")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -52,7 +55,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("3_g3qla")
+texture = ExtResource("3_xb7qx")
 
 [node name="Amount" type="TextureRect" parent="Cost"]
 layout_mode = 0
@@ -60,7 +63,7 @@ offset_left = 40.0
 offset_right = 104.0
 offset_bottom = 64.0
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("3_6vyff")
+texture = ExtResource("4_bc2q2")
 
 [node name="Label" type="Label" parent="Cost/Amount"]
 layout_mode = 1
@@ -75,10 +78,26 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "0"
-label_settings = SubResource("LabelSettings_g3qla")
+text = "3"
+label_settings = SubResource("LabelSettings_3wvpt")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Art" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -149.0
+offset_right = 108.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_pmc48")
+expand_mode = 1
 
 [node name="Description" type="Label" parent="."]
 layout_mode = 1
@@ -93,8 +112,9 @@ offset_right = 139.0
 offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Here is some text down here. This is what the card does."
-label_settings = SubResource("LabelSettings_0kxo8")
+text = "Deal 4 damage to each enemy.
+🎲: Deal 2 damage to each duck."
+label_settings = SubResource("LabelSettings_pmc48")
 horizontal_alignment = 1
 vertical_alignment = 2
 autowrap_mode = 3

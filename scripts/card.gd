@@ -8,7 +8,11 @@ signal dropped
 
 ## Exported Variables
 @export var card_name: String # The name of the card
+@export var color: References.ManaColor # The card's color
+@export var cost: int # The card's cost
+@export var card_type: References.CardType # The card's type
 @export var target: References.TargetType # The card's target type
+@export var traits: Array[References.Trait] # The card's traits
 
 ## Variables
 var dragging = false # Whether the card is currently being dragged
@@ -17,6 +21,9 @@ var rise_height = 30 # How high the card rises when hovered or selected
 var shift_distance = 125 # How far the card is shifted to the right
 
 ## CARD MECHANICS
+## Do Effect - this function will be overridden by the card's child class
+func do_effect(target=null):
+	pass
 
 ## VISUALS AND MOUSE
 ## Process (dragging cards)

@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://dxrxt02atigj5"]
+[gd_scene load_steps=12 format=3 uid="uid://dxrxt02atigj5"]
 
+[ext_resource type="Theme" uid="uid://b8y45r78rkna5" path="res://nodes/themes/gamewidetheme.tres" id="1_5cypo"]
 [ext_resource type="Script" uid="uid://cveeq18405o4s" path="res://scripts/game_controller.gd" id="1_s3esy"]
 [ext_resource type="PackedScene" uid="uid://hkuhdy33ucwm" path="res://scenes/encounters/test_encounter.tscn" id="2_ipu61"]
 [ext_resource type="PackedScene" uid="uid://c5exuhggdhxa8" path="res://nodes/ducks/wizard.tscn" id="3_ipu61"]
@@ -18,6 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_5cypo")
 script = ExtResource("1_s3esy")
 encounter = ExtResource("2_ipu61")
 ducks = [NodePath("Barbarian"), NodePath("Wizard"), NodePath("Bard")]

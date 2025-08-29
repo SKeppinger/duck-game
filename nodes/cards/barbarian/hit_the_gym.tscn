@@ -91,16 +91,15 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -139.0
-offset_top = -372.0
+offset_top = -162.0
 offset_right = 139.0
 offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Gain Shield.
-"
+text = "Gain Shield."
 label_settings = SubResource("LabelSettings_raahi")
 horizontal_alignment = 1
-vertical_alignment = 2
+vertical_alignment = 1
 autowrap_mode = 3
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

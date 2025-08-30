@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://b8y45r78rkna5"]
+
+[ext_resource type="FontFile" uid="uid://c7wf2ukqdgxwg" path="res://assets/Fonts/AwfullyDigital.ttf" id="1_afxj6"]
+
+[resource]
+default_font = ExtResource("1_afxj6")
+default_font_size = 0

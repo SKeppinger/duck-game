@@ -3,7 +3,7 @@ class_name Encounter
 
 ## Exported Variables
 @export var enemy_scenes: Array[PackedScene] # The enemies in the encounter
-@export var encounter_deck: Array[Card] # The encounter deck
+@export var encounter_deck: Array[EnemyCard] # The encounter deck
 @export var boss_encounter = false # Whether this is a boss encounter
 @export var neutral_mana: PackedScene # The neutral mana pip
 
@@ -26,7 +26,8 @@ var discard_pile: Array[Card] # The discard pile
 var player_mana: Array[ManaPip] # The player's mana
 
 ## Other Variables
-var deck_node = null
+var deck_node = null # The deck node
+var encounter_discard = Array[EnemyDeck] # The used enemy cards
 var states = References.EncounterState # The states enum
 var state = states.StartPlayer # The current state
 var cards_to_draw = 5 # How many cards the player draws each turn
@@ -98,6 +99,9 @@ func _process(_delta):
 			state = states.EnemyCards
 		# Encounter deck cards
 		states.EnemyCards:
+			if encounter_deck.is_empty():
+				
+			var drawn_card = encounter_deck.pop_front()
 			state = states.EnemyBlock
 		# Player blocks enemy attacks
 		states.EnemyBlock:
@@ -124,6 +128,9 @@ func _ready():
 		enemy_instance.targeted.connect(_on_enemy_targeted)
 		enemies.append(enemy_instance)
 	# Shuffle encounter deck
+	for card in encounter_deck:
+		if card is EnemyAttack:
+			card.enemy_attack.connect(enemy_attack)
 	encounter_deck.shuffle()
 
 ## Receive player info from the Main Game
@@ -252,6 +259,10 @@ func damage_all(damage, reducible):
 func damage_all_ducks(damage, reducible):
 	for duck in ducks:
 		duck.damage(damage, reducible)
+
+## Enemy Attack
+func enemy_attack(target):
+	pass
 
 ## On Duck Attack
 func _on_duck_attack(duck):

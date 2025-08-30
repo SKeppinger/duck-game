@@ -6,6 +6,7 @@ class_name Encounter
 @export var encounter_deck: Array[EnemyCard] # The encounter deck
 @export var boss_encounter = false # Whether this is a boss encounter
 @export var neutral_mana: PackedScene # The neutral mana pip
+@export var difficulty = 0 # The encounter's difficulty (affects how many enemy cards are played)
 
 ## Children
 @onready var enemy_box = $Enemies
@@ -27,16 +28,19 @@ var player_mana: Array[ManaPip] # The player's mana
 
 ## Other Variables
 var deck_node = null # The deck node
-var encounter_discard = Array[EnemyCard] # The used enemy cards
+var encounter_discard: Array[EnemyCard] # The used enemy cards
 var states = References.EncounterState # The states enum
 var state = states.StartPlayer # The current state
 var cards_to_draw = 5 # How many cards the player draws each turn
-var minions: Array[Enemy] # Summoned minions
+var minions: Array[Enemy] # Summoned minions (INCLUDED in enemies array as well)
 var action_phase_started = false # Whether the action phase has been started
 var target_phase_started = false # Whether the target phase has been started
 var attacker = null # The current attacker
 var caster = null # The current caster
 var current_card = null # The current card being played
+var current_enemy = null # The current enemy playing a card
+var enemy_cards_played = 0 # The number of enemy cards played this turn
+var enemy_cards_to_play = 0 # The number of enemy cards to play this turn
 
 ## Process (Main Gameplay Loop)
 func _process(_delta):
@@ -99,16 +103,36 @@ func _process(_delta):
 			state = states.EnemyCards
 		# Encounter deck cards
 		states.EnemyCards:
+			if enemy_cards_played == 0:
+				enemy_cards_to_play = difficulty + len(enemies) - len(minions)
+			if enemy_cards_played == enemy_cards_to_play:
+				enemy_cards_played = 0
+				state = states.MinionAction
 			if encounter_deck.is_empty():
 				for card in encounter_discard:
 					encounter_deck.append(card)
-				encounter_discard = Array[EnemyCard]
+				encounter_discard.clear()
 				encounter_deck.shuffle()
 			var drawn_card = encounter_deck.pop_front()
-			state = states.EnemyBlock
+			print("enemies play " + drawn_card.card_name)
+			current_enemy = enemies[enemy_cards_played]
+			var target = null
+			match drawn_card.target:
+				References.TargetType.Duck:
+					target = ducks[randi_range(0, len(ducks) - 1)]
+				References.TargetType.Enemy:
+					target = enemies[randi_range(0, len(enemies) - len(minions) - 1)]
+			enemy_cards_played += 1
+			encounter_discard.append(drawn_card)
+			drawn_card.do_effect(target)
 		# Player blocks enemy attacks
 		states.EnemyBlock:
-			state = states.MinionAction
+			print("block stage goes here")
+			if enemy_cards_played == enemy_cards_to_play:
+				enemy_cards_played = 0
+				state = states.MinionAction
+			else:
+				state = states.EnemyCards
 		# Minion actions
 		states.MinionAction:
 			state = states.MinionBlock
@@ -265,7 +289,10 @@ func damage_all_ducks(damage, reducible):
 
 ## Enemy Attack
 func enemy_attack(target):
-	pass
+	if state == states.EnemyCards:
+		state = states.EnemyBlock
+	elif state == states.MinionAction:
+		state = states.MinionBlock
 
 ## On Duck Attack
 func _on_duck_attack(duck):

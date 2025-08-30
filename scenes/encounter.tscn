@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://h0o83tpajxhk"]
+[gd_scene load_steps=12 format=3 uid="uid://h0o83tpajxhk"]
 
 [ext_resource type="PackedScene" uid="uid://duoih8amrfxoa" path="res://nodes/ui/run_info.tscn" id="1_2dnca"]
 [ext_resource type="Script" uid="uid://ctqsnaolrbnfo" path="res://scripts/encounter.gd" id="1_3l52i"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://3uolxoau7w60" path="res://nodes/ui/mana.tscn" id="5_mw7nh"]
 [ext_resource type="PackedScene" uid="uid://41av77fatelo" path="res://nodes/ui/card_pile.tscn" id="6_ip0ee"]
 [ext_resource type="PackedScene" uid="uid://7hyi2qx5amha" path="res://nodes/ui/hand.tscn" id="7_se0eo"]
-[ext_resource type="PackedScene" uid="uid://c16sii687gjt1" path="res://nodes/cards/card.tscn" id="9_0kgoe"]
 [ext_resource type="PackedScene" uid="uid://ebnsydu1akj8" path="res://nodes/ui/end_turn.tscn" id="9_mw7nh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kivw1"]
@@ -23,7 +22,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3l52i")
-encounter_deck = [NodePath("EncounterDeck/Card"), NodePath("EncounterDeck/Card2"), NodePath("EncounterDeck/Card3"), NodePath("EncounterDeck/Card4")]
+encounter_deck = [NodePath(""), NodePath(""), NodePath(""), NodePath("")]
 neutral_mana = ExtResource("3_mw7nh")
 
 [node name="RunInfo" parent="." instance=ExtResource("1_2dnca")]
@@ -143,50 +142,6 @@ anchor_right = 1.0
 offset_left = -40.0
 offset_bottom = 40.0
 grow_horizontal = 0
-
-[node name="Card" parent="EncounterDeck" instance=ExtResource("9_0kgoe")]
-visible = false
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -240.0
-offset_right = 80.0
-grow_horizontal = 0
-card_name = "Card 1"
-
-[node name="Card2" parent="EncounterDeck" instance=ExtResource("9_0kgoe")]
-visible = false
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -240.0
-offset_right = 80.0
-grow_horizontal = 0
-card_name = "Card 2"
-
-[node name="Card3" parent="EncounterDeck" instance=ExtResource("9_0kgoe")]
-visible = false
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -240.0
-offset_right = 80.0
-grow_horizontal = 0
-card_name = "Card 3"
-
-[node name="Card4" parent="EncounterDeck" instance=ExtResource("9_0kgoe")]
-visible = false
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -240.0
-offset_right = 80.0
-grow_horizontal = 0
-card_name = "Card 4"
 
 [node name="ManaPips" type="Node" parent="."]
 

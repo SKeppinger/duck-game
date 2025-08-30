@@ -27,7 +27,7 @@ var player_mana: Array[ManaPip] # The player's mana
 
 ## Other Variables
 var deck_node = null # The deck node
-var encounter_discard = Array[EnemyDeck] # The used enemy cards
+var encounter_discard = Array[EnemyCard] # The used enemy cards
 var states = References.EncounterState # The states enum
 var state = states.StartPlayer # The current state
 var cards_to_draw = 5 # How many cards the player draws each turn
@@ -100,7 +100,10 @@ func _process(_delta):
 		# Encounter deck cards
 		states.EnemyCards:
 			if encounter_deck.is_empty():
-				
+				for card in encounter_discard:
+					encounter_deck.append(card)
+				encounter_discard = Array[EnemyCard]
+				encounter_deck.shuffle()
 			var drawn_card = encounter_deck.pop_front()
 			state = states.EnemyBlock
 		# Player blocks enemy attacks

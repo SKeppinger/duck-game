@@ -289,7 +289,7 @@ func damage_all_ducks(damage, reducible):
 		duck.damage(damage, reducible)
 
 ## Enemy Attack
-func enemy_attack(target):
+func enemy_attack():
 	if state == states.EnemyCards:
 		state = states.EnemyBlock
 	elif state == states.MinionAction:

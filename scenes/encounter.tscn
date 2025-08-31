@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://h0o83tpajxhk"]
+[gd_scene load_steps=14 format=3 uid="uid://h0o83tpajxhk"]
 
 [ext_resource type="PackedScene" uid="uid://duoih8amrfxoa" path="res://nodes/ui/run_info.tscn" id="1_2dnca"]
 [ext_resource type="Script" uid="uid://ctqsnaolrbnfo" path="res://scripts/encounter.gd" id="1_3l52i"]
+[ext_resource type="Theme" uid="uid://b8y45r78rkna5" path="res://nodes/themes/gamewidetheme.tres" id="1_ip0ee"]
 [ext_resource type="PackedScene" uid="uid://bbh1hce1nelbl" path="res://nodes/ui/ducks.tscn" id="2_3l52i"]
 [ext_resource type="PackedScene" uid="uid://xp8i7crn78jh" path="res://nodes/ui/enemies.tscn" id="3_0kgoe"]
 [ext_resource type="PackedScene" uid="uid://clc357efiavjv" path="res://nodes/ui/mana_pip_neutral.tscn" id="3_mw7nh"]
@@ -22,6 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_ip0ee")
 script = ExtResource("1_3l52i")
 encounter_deck = [null, null, null, null]
 neutral_mana = ExtResource("3_mw7nh")

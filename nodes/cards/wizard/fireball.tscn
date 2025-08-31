@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpk7wn42is87d"]
+[gd_scene load_steps=10 format=3 uid="uid://bpk7wn42is87d"]
 
 [ext_resource type="Texture2D" uid="uid://c5o3wmsfp7xve" path="res://assets/icons/cardframe_dps.png" id="1_5av0c"]
+[ext_resource type="Theme" uid="uid://b8y45r78rkna5" path="res://nodes/themes/gamewidetheme.tres" id="1_xb7qx"]
 [ext_resource type="Script" uid="uid://ccckvmyc2qt1g" path="res://scripts/fireball.gd" id="2_pmc48"]
 [ext_resource type="Texture2D" uid="uid://b6nen2hwg00wm" path="res://assets/icons/manaicon_dps.png" id="3_xb7qx"]
 [ext_resource type="Texture2D" uid="uid://bp6mkn7yuqvdu" path="res://assets/temporary/64x64.png" id="4_bc2q2"]
@@ -21,6 +22,7 @@ font_color = Color(0, 0, 0, 1)
 [node name="Fireball" type="TextureRect"]
 offset_right = 320.0
 offset_bottom = 448.0
+theme = ExtResource("1_xb7qx")
 texture = ExtResource("1_5av0c")
 stretch_mode = 4
 script = ExtResource("2_pmc48")

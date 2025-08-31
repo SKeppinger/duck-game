@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dy0esukimc0bn"]
+[gd_scene load_steps=9 format=3 uid="uid://dy0esukimc0bn"]
 
+[ext_resource type="Theme" uid="uid://b8y45r78rkna5" path="res://nodes/themes/gamewidetheme.tres" id="1_e6rar"]
 [ext_resource type="Texture2D" uid="uid://c5o3wmsfp7xve" path="res://assets/icons/cardframe_dps.png" id="1_uivas"]
 [ext_resource type="Script" uid="uid://emh0t8jwajp5" path="res://scripts/single_target_damage.gd" id="2_uivas"]
 [ext_resource type="Texture2D" uid="uid://b6nen2hwg00wm" path="res://assets/icons/manaicon_dps.png" id="3_ktcwl"]
@@ -20,6 +21,7 @@ font_color = Color(0, 0, 0, 1)
 [node name="MagicMissile" type="TextureRect"]
 offset_right = 320.0
 offset_bottom = 448.0
+theme = ExtResource("1_e6rar")
 texture = ExtResource("1_uivas")
 stretch_mode = 4
 script = ExtResource("2_uivas")

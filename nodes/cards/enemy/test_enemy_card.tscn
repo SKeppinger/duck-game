@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cynplj66yilip"]
+[gd_scene load_steps=6 format=3 uid="uid://cynplj66yilip"]
 
 [ext_resource type="Texture2D" uid="uid://c5o3wmsfp7xve" path="res://assets/icons/cardframe_dps.png" id="1_1u4gn"]
+[ext_resource type="Theme" uid="uid://b8y45r78rkna5" path="res://nodes/themes/gamewidetheme.tres" id="1_qncbw"]
 [ext_resource type="Script" uid="uid://b6v34x2cjecth" path="res://scripts/enemy_card.gd" id="2_akv7s"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_akv7s"]
@@ -14,6 +15,7 @@ font_color = Color(0, 0, 0, 1)
 [node name="TestEnemyCard" type="TextureRect"]
 offset_right = 320.0
 offset_bottom = 448.0
+theme = ExtResource("1_qncbw")
 texture = ExtResource("1_1u4gn")
 stretch_mode = 4
 script = ExtResource("2_akv7s")

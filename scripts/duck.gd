@@ -105,6 +105,7 @@ func _on_attack_clicked(event):
 func _on_defense_clicked(event):
 	if event.is_action_pressed("click"):
 		if can_defend:
+			tapped = true
 			defend.emit(self)
 
 ## Attack Target

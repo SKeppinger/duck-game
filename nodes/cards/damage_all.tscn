@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dumse6u2lr5ny"]
+[gd_scene load_steps=9 format=3 uid="uid://dumse6u2lr5ny"]
 
+[ext_resource type="Theme" uid="uid://b8y45r78rkna5" path="res://nodes/themes/gamewidetheme.tres" id="1_dnwd6"]
 [ext_resource type="Texture2D" uid="uid://bnny1vkc1bfv0" path="res://assets/temporary/320x448.png" id="1_mhmfh"]
 [ext_resource type="Script" uid="uid://2gap5eqyyvq4" path="res://scripts/damage_all.gd" id="2_mhmfh"]
 [ext_resource type="Texture2D" uid="uid://bp6mkn7yuqvdu" path="res://assets/temporary/64x64.png" id="3_abn0t"]
@@ -17,9 +18,10 @@ font_color = Color(0, 0, 0, 1)
 font_size = 24
 font_color = Color(0, 0, 0, 1)
 
-[node name="Card" type="TextureRect"]
+[node name="DamageAll" type="TextureRect"]
 offset_right = 320.0
 offset_bottom = 448.0
+theme = ExtResource("1_dnwd6")
 texture = ExtResource("1_mhmfh")
 stretch_mode = 4
 script = ExtResource("2_mhmfh")
@@ -34,7 +36,7 @@ offset_top = 30.0
 offset_right = 137.0
 offset_bottom = 68.0
 grow_horizontal = 2
-text = "Card Name"
+text = "DamageAll"
 label_settings = SubResource("LabelSettings_njcsl")
 horizontal_alignment = 1
 vertical_alignment = 1

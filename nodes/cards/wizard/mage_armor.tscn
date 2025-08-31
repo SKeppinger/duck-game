@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bav1o5hfyw443"]
+[gd_scene load_steps=9 format=3 uid="uid://bav1o5hfyw443"]
 
 [ext_resource type="Texture2D" uid="uid://c5o3wmsfp7xve" path="res://assets/icons/cardframe_dps.png" id="1_kfw6h"]
+[ext_resource type="Theme" uid="uid://b8y45r78rkna5" path="res://nodes/themes/gamewidetheme.tres" id="1_sf02f"]
 [ext_resource type="Script" uid="uid://dywbu1uykxgpx" path="res://scripts/add_effect_target.gd" id="2_kfw6h"]
 [ext_resource type="Texture2D" uid="uid://b6nen2hwg00wm" path="res://assets/icons/manaicon_dps.png" id="3_t2wrl"]
 [ext_resource type="Texture2D" uid="uid://bp6mkn7yuqvdu" path="res://assets/temporary/64x64.png" id="4_kjbhi"]
@@ -20,6 +21,7 @@ font_color = Color(0, 0, 0, 1)
 [node name="MageArmor" type="TextureRect"]
 offset_right = 320.0
 offset_bottom = 448.0
+theme = ExtResource("1_sf02f")
 texture = ExtResource("1_kfw6h")
 stretch_mode = 4
 script = ExtResource("2_kfw6h")

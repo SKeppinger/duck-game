@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://hkuhdy33ucwm"]
+[gd_scene load_steps=17 format=3 uid="uid://hkuhdy33ucwm"]
 
 [ext_resource type="Script" uid="uid://ctqsnaolrbnfo" path="res://scripts/encounter.gd" id="1_ereep"]
+[ext_resource type="Theme" uid="uid://b8y45r78rkna5" path="res://nodes/themes/gamewidetheme.tres" id="1_v4kso"]
 [ext_resource type="PackedScene" uid="uid://duoih8amrfxoa" path="res://nodes/ui/run_info.tscn" id="2_5h4bo"]
 [ext_resource type="PackedScene" uid="uid://cti1umoj003tf" path="res://nodes/enemies/test_enemy.tscn" id="2_uoy0y"]
 [ext_resource type="PackedScene" uid="uid://bbh1hce1nelbl" path="res://nodes/ui/ducks.tscn" id="3_cqyvt"]
@@ -25,6 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_v4kso")
 script = ExtResource("1_ereep")
 enemy_scenes = Array[PackedScene]([ExtResource("2_uoy0y"), ExtResource("2_uoy0y"), ExtResource("2_uoy0y")])
 encounter_deck = [NodePath("EncounterDeck/Attack")]

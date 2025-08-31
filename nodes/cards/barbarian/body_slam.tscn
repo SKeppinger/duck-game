@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://csdss2nfcilxr"]
+[gd_scene load_steps=9 format=3 uid="uid://csdss2nfcilxr"]
 
+[ext_resource type="Theme" uid="uid://b8y45r78rkna5" path="res://nodes/themes/gamewidetheme.tres" id="1_ehe68"]
 [ext_resource type="Texture2D" uid="uid://ckf70y6colw2f" path="res://assets/icons/cardframe_tnk.png" id="1_pvd4p"]
 [ext_resource type="Script" uid="uid://emh0t8jwajp5" path="res://scripts/single_target_damage.gd" id="2_pvd4p"]
 [ext_resource type="Texture2D" uid="uid://cv1o8ubii5sib" path="res://assets/icons/manaicon_tnk.png" id="3_0dt52"]
@@ -20,6 +21,7 @@ font_color = Color(0, 0, 0, 1)
 [node name="BodySlam" type="TextureRect"]
 offset_right = 320.0
 offset_bottom = 448.0
+theme = ExtResource("1_ehe68")
 texture = ExtResource("1_pvd4p")
 stretch_mode = 4
 script = ExtResource("2_pvd4p")

@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://b4pvijcymt12h"]
+[gd_scene load_steps=9 format=3 uid="uid://b4pvijcymt12h"]
 
+[ext_resource type="Theme" uid="uid://b8y45r78rkna5" path="res://nodes/themes/gamewidetheme.tres" id="1_frctg"]
 [ext_resource type="Texture2D" uid="uid://bnny1vkc1bfv0" path="res://assets/temporary/320x448.png" id="1_lc4lg"]
 [ext_resource type="Script" uid="uid://dywbu1uykxgpx" path="res://scripts/add_effect_target.gd" id="2_lc4lg"]
 [ext_resource type="Texture2D" uid="uid://bp6mkn7yuqvdu" path="res://assets/temporary/64x64.png" id="3_levv6"]
@@ -13,13 +14,14 @@ font_color = Color(0, 0, 0, 1)
 font_size = 60
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_y3cwb"]
+[sub_resource type="LabelSettings" id="LabelSettings_frctg"]
 font_size = 24
 font_color = Color(0, 0, 0, 1)
 
-[node name="Card" type="TextureRect"]
+[node name="AddEffect" type="TextureRect"]
 offset_right = 320.0
 offset_bottom = 448.0
+theme = ExtResource("1_frctg")
 texture = ExtResource("1_lc4lg")
 stretch_mode = 4
 script = ExtResource("2_lc4lg")
@@ -34,7 +36,7 @@ offset_top = 30.0
 offset_right = 137.0
 offset_bottom = 68.0
 grow_horizontal = 2
-text = "Card Name"
+text = "AddEffect"
 label_settings = SubResource("LabelSettings_njcsl")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -109,9 +111,9 @@ offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Here is some text down here. This is what the card does."
-label_settings = SubResource("LabelSettings_y3cwb")
+label_settings = SubResource("LabelSettings_frctg")
 horizontal_alignment = 1
-vertical_alignment = 2
+vertical_alignment = 1
 autowrap_mode = 3
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

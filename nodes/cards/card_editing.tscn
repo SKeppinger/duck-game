@@ -1,0 +1,94 @@
+[gd_scene load_steps=16 format=3 uid="uid://b06473q8e4fqe"]
+
+[ext_resource type="PackedScene" uid="uid://bukopaeam3g1i" path="res://nodes/cards/barbarian/test_barbarian_card.tscn" id="1_n86g5"]
+[ext_resource type="PackedScene" uid="uid://csdss2nfcilxr" path="res://nodes/cards/barbarian/body_slam.tscn" id="2_up5tx"]
+[ext_resource type="PackedScene" uid="uid://dpx2ugwn7fpen" path="res://nodes/cards/barbarian/hit_the_gym.tscn" id="3_dic0t"]
+[ext_resource type="PackedScene" uid="uid://dfx6g58lib8y7" path="res://nodes/cards/bard/test_bard_card.tscn" id="4_nxlt5"]
+[ext_resource type="PackedScene" uid="uid://c7sk284gqw4yb" path="res://nodes/cards/wizard/test_wizard_card.tscn" id="5_p00xg"]
+[ext_resource type="PackedScene" uid="uid://dy0esukimc0bn" path="res://nodes/cards/wizard/magic_missile.tscn" id="6_asjhd"]
+[ext_resource type="PackedScene" uid="uid://bav1o5hfyw443" path="res://nodes/cards/wizard/mage_armor.tscn" id="7_pw6on"]
+[ext_resource type="PackedScene" uid="uid://bpk7wn42is87d" path="res://nodes/cards/wizard/fireball.tscn" id="8_sf6rx"]
+[ext_resource type="PackedScene" uid="uid://cynplj66yilip" path="res://nodes/cards/enemy/test_enemy_card.tscn" id="9_74qcj"]
+[ext_resource type="PackedScene" uid="uid://pf0ma5civvr8" path="res://nodes/cards/enemy/attack.tscn" id="10_clayb"]
+[ext_resource type="PackedScene" uid="uid://c16sii687gjt1" path="res://nodes/cards/card.tscn" id="11_fs025"]
+[ext_resource type="PackedScene" uid="uid://b4pvijcymt12h" path="res://nodes/cards/add_effect.tscn" id="12_vlv53"]
+[ext_resource type="PackedScene" uid="uid://cwn7ryk8wk5hp" path="res://nodes/cards/add_effect_self.tscn" id="13_rdw61"]
+[ext_resource type="PackedScene" uid="uid://dumse6u2lr5ny" path="res://nodes/cards/damage_all.tscn" id="14_86uam"]
+[ext_resource type="PackedScene" uid="uid://cmyexw3ixm8cs" path="res://nodes/cards/single_target_damage.tscn" id="15_4bv8g"]
+
+[node name="CardEditing" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VFlowContainer" type="HFlowContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 5244.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Abstract" type="VFlowContainer" parent="VFlowContainer"]
+layout_mode = 2
+
+[node name="Card" parent="VFlowContainer/Abstract" instance=ExtResource("11_fs025")]
+layout_mode = 2
+
+[node name="AddEffect" parent="VFlowContainer/Abstract" instance=ExtResource("12_vlv53")]
+layout_mode = 2
+
+[node name="AddEffectSelf" parent="VFlowContainer/Abstract" instance=ExtResource("13_rdw61")]
+layout_mode = 2
+
+[node name="DamageAll" parent="VFlowContainer/Abstract" instance=ExtResource("14_86uam")]
+layout_mode = 2
+
+[node name="SingleTargetDamage" parent="VFlowContainer/Abstract" instance=ExtResource("15_4bv8g")]
+layout_mode = 2
+
+[node name="Barbarian" type="VFlowContainer" parent="VFlowContainer"]
+layout_mode = 2
+
+[node name="TestBarbarianCard" parent="VFlowContainer/Barbarian" instance=ExtResource("1_n86g5")]
+layout_mode = 2
+
+[node name="BodySlam" parent="VFlowContainer/Barbarian" instance=ExtResource("2_up5tx")]
+layout_mode = 2
+
+[node name="HitTheGym" parent="VFlowContainer/Barbarian" instance=ExtResource("3_dic0t")]
+layout_mode = 2
+
+[node name="Wizard" type="VFlowContainer" parent="VFlowContainer"]
+layout_mode = 2
+
+[node name="WizardCard" parent="VFlowContainer/Wizard" instance=ExtResource("5_p00xg")]
+layout_mode = 2
+
+[node name="MagicMissile" parent="VFlowContainer/Wizard" instance=ExtResource("6_asjhd")]
+layout_mode = 2
+
+[node name="MageArmor" parent="VFlowContainer/Wizard" instance=ExtResource("7_pw6on")]
+layout_mode = 2
+
+[node name="Fireball" parent="VFlowContainer/Wizard" instance=ExtResource("8_sf6rx")]
+layout_mode = 2
+
+[node name="Bard" type="VFlowContainer" parent="VFlowContainer"]
+layout_mode = 2
+
+[node name="BardCard" parent="VFlowContainer/Bard" instance=ExtResource("4_nxlt5")]
+layout_mode = 2
+
+[node name="Enemy" type="VFlowContainer" parent="VFlowContainer"]
+layout_mode = 2
+
+[node name="TestEnemyCard" parent="VFlowContainer/Enemy" instance=ExtResource("9_74qcj")]
+layout_mode = 2
+
+[node name="Attack" parent="VFlowContainer/Enemy" instance=ExtResource("10_clayb")]
+layout_mode = 2

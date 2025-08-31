@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dfx6g58lib8y7"]
+[gd_scene load_steps=9 format=3 uid="uid://dfx6g58lib8y7"]
 
+[ext_resource type="Theme" uid="uid://b8y45r78rkna5" path="res://nodes/themes/gamewidetheme.tres" id="1_0kxo8"]
 [ext_resource type="Texture2D" uid="uid://bfdhc2y4ql1ig" path="res://assets/icons/cardframe_sup.png" id="1_3xl88"]
 [ext_resource type="Script" uid="uid://cho0l1ekgerv2" path="res://scripts/card.gd" id="2_rhy3g"]
 [ext_resource type="Texture2D" uid="uid://bp6mkn7yuqvdu" path="res://assets/temporary/64x64.png" id="3_6vyff"]
@@ -20,6 +21,7 @@ font_color = Color(0, 0, 0, 1)
 [node name="BardCard" type="TextureRect"]
 offset_right = 320.0
 offset_bottom = 448.0
+theme = ExtResource("1_0kxo8")
 texture = ExtResource("1_3xl88")
 stretch_mode = 4
 script = ExtResource("2_rhy3g")
@@ -88,7 +90,7 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -139.0
-offset_top = -372.0
+offset_top = -162.0
 offset_right = 139.0
 offset_bottom = -17.0
 grow_horizontal = 2
@@ -96,7 +98,7 @@ grow_vertical = 0
 text = "Here is some text down here. This is what the card does."
 label_settings = SubResource("LabelSettings_0kxo8")
 horizontal_alignment = 1
-vertical_alignment = 2
+vertical_alignment = 1
 autowrap_mode = 3
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

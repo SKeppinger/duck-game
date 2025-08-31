@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://buxyo4pt24u0h"]
+
+[ext_resource type="Texture2D" uid="uid://bnny1vkc1bfv0" path="res://assets/temporary/320x448.png" id="1_60kwc"]
+[ext_resource type="Script" uid="uid://cm5bkcd2wd72f" path="res://scripts/end_block.gd" id="2_60kwc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_es8ie"]
+font_size = 64
+font_color = Color(0, 0, 0, 1)
+
+[node name="EndBlock" type="TextureRect"]
+offset_right = 320.0
+offset_bottom = 448.0
+rotation = -1.5708
+scale = Vector2(0.4, 0.4)
+mouse_default_cursor_shape = 2
+texture = ExtResource("1_60kwc")
+script = ExtResource("2_60kwc")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 142.0
+offset_top = -199.0
+offset_right = 540.0
+offset_bottom = 86.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5708
+text = "Continue"
+label_settings = SubResource("LabelSettings_es8ie")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

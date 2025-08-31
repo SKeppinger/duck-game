@@ -29,6 +29,7 @@ var HP_actual: int # The duck's current HP
 ## Other
 signal targeted # A signal to send when the duck is clicked
 signal attack # A signal to emit to the encounter script when the duck attacks
+signal defend # A signal to emit to the encounter script when the duck defends
 signal died # A signal to emit when the duck dies
 var effects: Array[References.Effect] # The duck's currently active buffs and debuffs
 var upgrades: Array[Upgrade] # The duck's currentyl active upgrades
@@ -64,6 +65,20 @@ func end_action_phase():
 	can_attack = false
 	atk_icon.mouse_default_cursor_shape = CursorShape.CURSOR_ARROW
 
+## Start Block Phase
+func start_block_phase():
+	if not tapped:
+		can_defend = true
+		def_icon.mouse_default_cursor_shape = CursorShape.CURSOR_POINTING_HAND
+	else:
+		can_defend = false
+		def_icon.mouse_default_cursor_shape = CursorShape.CURSOR_ARROW
+
+## End Block Phase
+func end_block_phase():
+	can_defend = false
+	def_icon.mouse_default_cursor_shape = CursorShape.CURSOR_ARROW
+
 ## Start Target Phase
 func start_target_phase():
 	can_target = true
@@ -85,6 +100,12 @@ func _on_attack_clicked(event):
 	if event.is_action_pressed("click"):
 		if can_attack:
 			attack.emit(self)
+
+## Defense Clicked
+func _on_defense_clicked(event):
+	if event.is_action_pressed("click"):
+		if can_defend:
+			defend.emit(self)
 
 ## Attack Target
 func attack_target(target, reducible=true):

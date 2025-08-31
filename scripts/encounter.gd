@@ -18,6 +18,7 @@ class_name Encounter
 @onready var play_area = $PlayArea
 @onready var mana_pips = $ManaPips
 @onready var end_button = $EndTurn
+@onready var end_block_button = $EndBlock
 
 ## Variables from Main Game
 var ducks: Array[Duck] # The player's duck team
@@ -35,10 +36,12 @@ var cards_to_draw = 5 # How many cards the player draws each turn
 var minions: Array[Enemy] # Summoned minions (INCLUDED in enemies array as well)
 var action_phase_started = false # Whether the action phase has been started
 var target_phase_started = false # Whether the target phase has been started
+var block_phase_started = false # Whether the block phase has been started
 var attacker = null # The current attacker
 var caster = null # The current caster
 var current_card = null # The current card being played
 var current_enemy = null # The current enemy playing a card
+var current_enemy_target = null # The enemy's current target
 var enemy_cards_played = 0 # The number of enemy cards played this turn
 var enemy_cards_to_play = 0 # The number of enemy cards to play this turn
 
@@ -114,25 +117,23 @@ func _process(_delta):
 				encounter_discard.clear()
 				encounter_deck.shuffle()
 			var drawn_card = encounter_deck.pop_front()
-			print("enemies play " + drawn_card.card_name)
 			current_enemy = enemies[enemy_cards_played]
-			var target = null
 			match drawn_card.target:
 				References.TargetType.Duck:
-					target = ducks[randi_range(0, len(ducks) - 1)]
+					current_enemy_target = ducks[randi_range(0, len(ducks) - 1)]
 				References.TargetType.Enemy:
-					target = enemies[randi_range(0, len(enemies) - len(minions) - 1)]
+					current_enemy_target = enemies[randi_range(0, len(enemies) - len(minions) - 1)]
+			print("enemies play " + drawn_card.card_name + " on " + current_enemy_target.duck_name)
 			enemy_cards_played += 1
 			encounter_discard.append(drawn_card)
-			drawn_card.do_effect(target)
+			drawn_card.do_effect(current_enemy_target)
 		# Player blocks enemy attacks
 		states.EnemyBlock:
-			print("block stage goes here")
-			if enemy_cards_played == enemy_cards_to_play:
-				enemy_cards_played = 0
-				state = states.MinionAction
-			else:
-				state = states.EnemyCards
+			end_block_button.visible = true
+			if not block_phase_started:
+				for duck in ducks:
+					duck.start_block_phase()
+				block_phase_started = true
 		# Minion actions
 		states.MinionAction:
 			state = states.MinionBlock
@@ -303,6 +304,20 @@ func _on_duck_attack(duck):
 		action_phase_started = false
 		state = states.PlayerAttackTarget
 
+## On Duck Defend
+func _on_duck_defend(duck):
+	current_enemy_target = duck
+	for d in ducks:
+		d.end_block_phase()
+	block_phase_started = false
+	end_block_button.visible = false
+	current_enemy.attack_target(current_enemy_target)
+	if enemy_cards_played == enemy_cards_to_play:
+		enemy_cards_played = 0
+		state = states.MinionAction
+	else:
+		state = states.EnemyCards
+
 ## On Enemy Targeted
 func _on_enemy_targeted(enemy):
 	if state == states.PlayerAttackTarget:
@@ -333,3 +348,16 @@ func _on_duck_targeted(duck):
 ## On End Turn
 func _on_end_turn():
 	state = states.EndPlayer
+
+## On End Block
+func _on_end_block():
+	for duck in ducks:
+		duck.end_block_phase()
+	block_phase_started = false
+	end_block_button.visible = false
+	current_enemy.attack_target(current_enemy_target)
+	if enemy_cards_played == enemy_cards_to_play:
+		enemy_cards_played = 0
+		state = states.MinionAction
+	else:
+		state = states.EnemyCards

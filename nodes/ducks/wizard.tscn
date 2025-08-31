@@ -202,3 +202,4 @@ horizontal_alignment = 1
 
 [connection signal="gui_input" from="." to="." method="_on_click"]
 [connection signal="gui_input" from="Attack" to="." method="_on_attack_clicked"]
+[connection signal="gui_input" from="Defense" to="." method="_on_defense_clicked"]

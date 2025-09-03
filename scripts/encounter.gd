@@ -44,6 +44,7 @@ var current_enemy = null # The current enemy playing a card
 var current_enemy_target = null # The enemy's current target
 var enemy_cards_played = 0 # The number of enemy cards played this turn
 var enemy_cards_to_play = 0 # The number of enemy cards to play this turn
+var facing_damage = 0 # The amount of blockable damage the duck is facing
 
 ## Process (Main Gameplay Loop)
 func _process(_delta):
@@ -109,8 +110,10 @@ func _process(_delta):
 			state = states.EnemyCards
 		# Encounter deck cards
 		states.EnemyCards:
+			if current_card:
+				current_card.visible = false
 			if enemy_cards_played == 0:
-				enemy_cards_to_play = difficulty + len(enemies) - len(minions)
+				enemy_cards_to_play = 3 ## TEMPORARY, just setting this to 3 rn
 			if enemy_cards_played == enemy_cards_to_play:
 				enemy_cards_played = 0
 				state = states.MinionAction
@@ -120,16 +123,18 @@ func _process(_delta):
 				encounter_discard.clear()
 				encounter_deck.shuffle()
 			var drawn_card = encounter_deck.pop_front()
-			current_enemy = enemies[enemy_cards_played]
+			current_enemy = enemies[randi_range(0, len(enemies) - 1)]
 			match drawn_card.target:
 				References.TargetType.Duck:
 					current_enemy_target = ducks[randi_range(0, len(ducks) - 1)]
+					current_enemy_target.show_target_arrow()
 				References.TargetType.Enemy:
 					current_enemy_target = enemies[randi_range(0, len(enemies) - len(minions) - 1)]
-			print("enemies play " + drawn_card.card_name + " on " + current_enemy_target.duck_name)
 			enemy_cards_played += 1
 			encounter_discard.append(drawn_card)
 			drawn_card.do_effect(current_enemy_target)
+			current_card = drawn_card
+			current_card.visible = true
 		# Player blocks enemy attacks
 		states.EnemyBlock:
 			end_block_button.visible = true
@@ -139,6 +144,8 @@ func _process(_delta):
 				block_phase_started = true
 		# Minion actions
 		states.MinionAction:
+			current_card.visible = false
+			current_card = null
 			state = states.MinionBlock
 		# Player blocks minion attacks
 		states.MinionBlock:
@@ -161,10 +168,18 @@ func _ready():
 		enemy_instance.position = enemy_box.get_node("Enemy" + str(enemy_count)).position
 		enemy_instance.targeted.connect(_on_enemy_targeted)
 		enemies.append(enemy_instance)
+	if enemy_count == 1:
+		enemies[0].position = enemy_box.get_node("Enemy2").position
+	if enemy_count == 2:
+		enemies[1].position = enemy_box.get_node("Enemy3").position
 	# Shuffle encounter deck
 	for card in encounter_deck:
 		if card is EnemyAttack:
 			card.enemy_attack.connect(enemy_attack)
+		if card is BlockableDamage:
+			card.blockable_damage.connect(blockable_damage)
+		if card is SummonMinion:
+			card.summon.connect(summon)
 	encounter_deck.shuffle()
 
 ## Receive player info from the Main Game
@@ -305,12 +320,32 @@ func damage_all_ducks(damage, reducible):
 	for duck in ducks:
 		duck.damage(damage, reducible)
 
+## Summon
+func summon(minion):
+	if len(minions) < 3:
+		var minion_instance = minion.instantiate()
+		minions.append(minion_instance)
+		enemy_box.add_child(minion_instance)
+		minion_instance.position = enemy_box.get_node("Minion" + str(len(minions))).position
+		minion_instance.targeted.connect(_on_enemy_targeted)
+		enemies.append(minion_instance)
+		if len(minions) == 1:
+			minions[0].position = enemy_box.get_node("Minion2").position
+		if len(minions) == 2:
+			minions[1].position = enemy_box.get_node("Minion3").position
+
 ## Enemy Attack
 func enemy_attack():
 	if state == states.EnemyCards:
 		state = states.EnemyBlock
 	elif state == states.MinionAction:
 		state = states.MinionBlock
+
+## Blockable Damage
+func blockable_damage(damage):
+	facing_damage = damage
+	if state == states.EnemyCards:
+		state = states.EnemyBlock
 
 ## On Duck Attack
 func _on_duck_attack(duck):
@@ -328,7 +363,11 @@ func _on_duck_defend(duck):
 		d.end_block_phase()
 	block_phase_started = false
 	end_block_button.visible = false
-	current_enemy.attack_target(current_enemy_target)
+	if current_card is EnemyAttack:
+		current_enemy.attack_target(current_enemy_target)
+	elif current_card is BlockableDamage:
+		current_enemy_target.damage(facing_damage, true)
+		facing_damage = 0
 	if enemy_cards_played == enemy_cards_to_play:
 		enemy_cards_played = 0
 		state = states.MinionAction
@@ -372,7 +411,11 @@ func _on_end_block():
 		duck.end_block_phase()
 	block_phase_started = false
 	end_block_button.visible = false
-	current_enemy.attack_target(current_enemy_target)
+	if current_card is EnemyAttack:
+		current_enemy.attack_target(current_enemy_target)
+	elif current_card is BlockableDamage:
+		current_enemy_target.damage(facing_damage, true)
+		facing_damage = 0
 	if enemy_cards_played == enemy_cards_to_play:
 		enemy_cards_played = 0
 		state = states.MinionAction

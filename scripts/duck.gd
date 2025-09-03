@@ -2,6 +2,7 @@ extends TextureRect
 class_name Duck
 
 ## Child References
+@onready var health_bar = $DuckInfo
 @onready var name_label = $DuckInfo/Name
 @onready var hp_label = $DuckInfo/HP
 @onready var atk_icon = $Attack
@@ -9,6 +10,8 @@ class_name Duck
 @onready var atk_label = $Attack/Num
 @onready var def_label = $Defense/Num
 @onready var tapped_label = $Tapped
+@onready var effects_row = $Effects
+@onready var target_arrow = $TargetArrow
 
 ## Stats
 @export var ATK: int # The duck's attack stat
@@ -45,11 +48,19 @@ func _process(_delta):
 		tapped_label.visible = true
 	else:
 		tapped_label.visible = false
+	
+	for effect_icon in effects_row.get_children():
+		effect_icon.visible = false
+	for i in range(len(effects)):
+		effects_row.get_child(i).visible = true
+	
+	health_bar.update(HP_actual)
 
 ## Initial Setup
 func _ready():
 	reset_stats()
 	update_labels()
+	health_bar.setup(HP)
 
 ## Start Action Phase
 func start_action_phase():
@@ -76,6 +87,7 @@ func start_block_phase():
 
 ## End Block Phase
 func end_block_phase():
+	hide_target_arrow()
 	can_defend = false
 	def_icon.mouse_default_cursor_shape = CursorShape.CURSOR_ARROW
 
@@ -86,8 +98,17 @@ func start_target_phase():
 
 ## End Target Phase
 func end_target_phase():
+	hide_target_arrow()
 	can_target = false
 	mouse_default_cursor_shape = CursorShape.CURSOR_ARROW
+
+## Show Target Arrow
+func show_target_arrow():
+	target_arrow.visible = true
+
+## Hide Target Arrow
+func hide_target_arrow():
+	target_arrow.visible = false
 
 ## On Click
 func _on_click(event):

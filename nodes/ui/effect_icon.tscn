@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://uow8juoy0q6"]
+
+[ext_resource type="Texture2D" uid="uid://c8in452nckw2f" path="res://assets/PLACEHOLDERS/shield_icon.png" id="1_dgkdk"]
+
+[node name="EffectIcon" type="TextureRect"]
+custom_minimum_size = Vector2(32, 32)
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("1_dgkdk")
+expand_mode = 1

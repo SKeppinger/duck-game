@@ -1,18 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://pf0ma5civvr8"]
+[gd_scene load_steps=6 format=3 uid="uid://dc6rh217gt0s2"]
 
-[ext_resource type="Theme" uid="uid://b8y45r78rkna5" path="res://nodes/themes/gamewidetheme.tres" id="1_8jllv"]
-[ext_resource type="Texture2D" uid="uid://cs3lipq4xjaf" path="res://assets/PLACEHOLDERS/cardframe_enemy.png" id="2_8jllv"]
-[ext_resource type="Script" uid="uid://bmxgyby5kt633" path="res://scripts/attack.gd" id="2_smj3t"]
+[ext_resource type="Theme" uid="uid://b8y45r78rkna5" path="res://nodes/themes/gamewidetheme.tres" id="1_a01ro"]
+[ext_resource type="Texture2D" uid="uid://cs3lipq4xjaf" path="res://assets/PLACEHOLDERS/cardframe_enemy.png" id="2_a01ro"]
+[ext_resource type="Script" uid="uid://dqheqr5dx3e4y" path="res://scripts/blockable_damage.gd" id="3_a01ro"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_8jllv"]
+[sub_resource type="LabelSettings" id="LabelSettings_akv7s"]
 font_size = 30
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_smj3t"]
-font_size = 36
+[sub_resource type="LabelSettings" id="LabelSettings_y3cwb"]
+font_size = 24
 font_color = Color(0, 0, 0, 1)
 
-[node name="Attack" type="TextureRect"]
+[node name="BlockableDamage" type="TextureRect"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -24,12 +24,10 @@ offset_right = 160.0
 offset_bottom = 224.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_8jllv")
-texture = ExtResource("2_8jllv")
+theme = ExtResource("1_a01ro")
+texture = ExtResource("2_a01ro")
 stretch_mode = 4
-script = ExtResource("2_smj3t")
-card_name = "Attack"
-target = 1
+script = ExtResource("3_a01ro")
 
 [node name="Name" type="Label" parent="."]
 layout_mode = 1
@@ -41,8 +39,8 @@ offset_top = 30.0
 offset_right = 137.0
 offset_bottom = 68.0
 grow_horizontal = 2
-text = "Attack"
-label_settings = SubResource("LabelSettings_8jllv")
+text = "Card Name"
+label_settings = SubResource("LabelSettings_akv7s")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -59,8 +57,8 @@ offset_right = 139.0
 offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Attack a random duck!"
-label_settings = SubResource("LabelSettings_smj3t")
+text = "Here is some text down here. This is what the card does."
+label_settings = SubResource("LabelSettings_y3cwb")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3

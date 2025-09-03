@@ -1,0 +1,283 @@
+[gd_scene load_steps=19 format=3 uid="uid://bgi24xhdop1oq"]
+
+[ext_resource type="Theme" uid="uid://b8y45r78rkna5" path="res://nodes/themes/gamewidetheme.tres" id="1_8etis"]
+[ext_resource type="Script" uid="uid://ctqsnaolrbnfo" path="res://scripts/encounter.gd" id="2_icdbt"]
+[ext_resource type="PackedScene" uid="uid://t5nvdbw1rfme" path="res://nodes/enemies/rat_king.tscn" id="3_8etis"]
+[ext_resource type="PackedScene" uid="uid://clc357efiavjv" path="res://nodes/ui/mana_pip_neutral.tscn" id="4_f0yp0"]
+[ext_resource type="Texture2D" uid="uid://k1k6ble32ko8" path="res://assets/backgrounds/test.png" id="5_7wams"]
+[ext_resource type="PackedScene" uid="uid://duoih8amrfxoa" path="res://nodes/ui/run_info.tscn" id="6_rv4ox"]
+[ext_resource type="PackedScene" uid="uid://bbh1hce1nelbl" path="res://nodes/ui/ducks.tscn" id="7_t0e51"]
+[ext_resource type="PackedScene" uid="uid://xp8i7crn78jh" path="res://nodes/ui/enemies.tscn" id="8_u73oj"]
+[ext_resource type="PackedScene" uid="uid://bvjgxreadx4oh" path="res://nodes/ui/enemies_boss.tscn" id="9_0jwg4"]
+[ext_resource type="PackedScene" uid="uid://3uolxoau7w60" path="res://nodes/ui/mana.tscn" id="10_cs17r"]
+[ext_resource type="PackedScene" uid="uid://41av77fatelo" path="res://nodes/ui/card_pile.tscn" id="11_28ql8"]
+[ext_resource type="PackedScene" uid="uid://ebnsydu1akj8" path="res://nodes/ui/end_turn.tscn" id="12_si3d4"]
+[ext_resource type="PackedScene" uid="uid://buxyo4pt24u0h" path="res://nodes/ui/end_block.tscn" id="13_ipp2s"]
+[ext_resource type="PackedScene" uid="uid://7hyi2qx5amha" path="res://nodes/ui/hand.tscn" id="14_k4wwn"]
+[ext_resource type="PackedScene" uid="uid://cwv734p5k7ppa" path="res://nodes/cards/enemy/gnaw.tscn" id="15_8etis"]
+[ext_resource type="PackedScene" uid="uid://c0j3j3q82ji0d" path="res://nodes/cards/enemy/bite.tscn" id="16_icdbt"]
+[ext_resource type="PackedScene" uid="uid://bfvs3oq3q1nws" path="res://nodes/cards/enemy/squeak.tscn" id="17_c06xw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kivw1"]
+font_size = 48
+
+[node name="Test_Encounter" type="Control" node_paths=PackedStringArray("encounter_deck")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_8etis")
+script = ExtResource("2_icdbt")
+enemy_scenes = Array[PackedScene]([ExtResource("3_8etis")])
+encounter_deck = [NodePath("EncounterDeck/Gnaw"), NodePath("EncounterDeck/Gnaw2"), NodePath("EncounterDeck/Gnaw3"), NodePath("EncounterDeck/Gnaw4"), NodePath("EncounterDeck/Bite"), NodePath("EncounterDeck/Bite2"), NodePath("EncounterDeck/Bite3"), NodePath("EncounterDeck/Bite4"), NodePath("EncounterDeck/Squeak"), NodePath("EncounterDeck/Squeak2"), NodePath("EncounterDeck/Squeak3"), NodePath("EncounterDeck/Squeak4")]
+neutral_mana = ExtResource("4_f0yp0")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -980.0
+offset_right = 960.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("5_7wams")
+
+[node name="RunInfo" parent="." instance=ExtResource("6_rv4ox")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 0.0
+offset_right = 1920.0
+grow_horizontal = 1
+
+[node name="Ducks" parent="." instance=ExtResource("7_t0e51")]
+layout_mode = 1
+
+[node name="Enemies" parent="." instance=ExtResource("8_u73oj")]
+layout_mode = 1
+
+[node name="EnemiesBoss" parent="." instance=ExtResource("9_0jwg4")]
+visible = false
+layout_mode = 1
+offset_left = -1073.0
+offset_right = -123.0
+
+[node name="Mana" parent="." instance=ExtResource("10_cs17r")]
+layout_mode = 1
+
+[node name="Deck" parent="." instance=ExtResource("11_28ql8")]
+visible = false
+layout_mode = 1
+
+[node name="Label" type="Label" parent="Deck"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Deck"
+label_settings = SubResource("LabelSettings_kivw1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Discard" parent="." instance=ExtResource("11_28ql8")]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -175.0
+offset_right = 0.0
+grow_horizontal = 0
+
+[node name="Label" type="Label" parent="Discard"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Discard"
+label_settings = SubResource("LabelSettings_kivw1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayArea" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -390.0
+offset_right = 960.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="EndTurn" parent="." instance=ExtResource("12_si3d4")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -181.0
+offset_top = -208.0
+offset_right = 139.0
+offset_bottom = 240.0
+grow_horizontal = 0
+grow_vertical = 0
+expand_mode = 1
+
+[node name="EndBlock" parent="." instance=ExtResource("13_ipp2s")]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -181.0
+offset_top = -208.0
+offset_right = 139.0
+offset_bottom = 240.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Hand" parent="." instance=ExtResource("14_k4wwn")]
+layout_mode = 2
+anchors_preset = 0
+offset_top = -293.0
+offset_bottom = 57.0
+
+[node name="EncounterDeck" type="Control" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Gnaw" parent="EncounterDeck" instance=ExtResource("15_8etis")]
+visible = false
+layout_mode = 1
+
+[node name="Gnaw2" parent="EncounterDeck" instance=ExtResource("15_8etis")]
+visible = false
+layout_mode = 1
+
+[node name="Gnaw3" parent="EncounterDeck" instance=ExtResource("15_8etis")]
+visible = false
+layout_mode = 1
+
+[node name="Gnaw4" parent="EncounterDeck" instance=ExtResource("15_8etis")]
+visible = false
+layout_mode = 1
+
+[node name="Bite" parent="EncounterDeck" instance=ExtResource("16_icdbt")]
+visible = false
+layout_mode = 1
+
+[node name="Bite2" parent="EncounterDeck" instance=ExtResource("16_icdbt")]
+visible = false
+layout_mode = 1
+
+[node name="Bite3" parent="EncounterDeck" instance=ExtResource("16_icdbt")]
+visible = false
+layout_mode = 1
+
+[node name="Bite4" parent="EncounterDeck" instance=ExtResource("16_icdbt")]
+visible = false
+layout_mode = 1
+
+[node name="Squeak" parent="EncounterDeck" instance=ExtResource("17_c06xw")]
+visible = false
+layout_mode = 1
+
+[node name="Squeak2" parent="EncounterDeck" instance=ExtResource("17_c06xw")]
+visible = false
+layout_mode = 1
+
+[node name="Squeak3" parent="EncounterDeck" instance=ExtResource("17_c06xw")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 320.0
+offset_bottom = 448.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Squeak4" parent="EncounterDeck" instance=ExtResource("17_c06xw")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 320.0
+offset_bottom = 448.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="ManaPips" type="Node" parent="."]
+
+[connection signal="attack" from="Ducks/Duck1" to="." method="_on_duck_attack"]
+[connection signal="defend" from="Ducks/Duck1" to="." method="_on_duck_defend"]
+[connection signal="targeted" from="Ducks/Duck1" to="." method="_on_duck_targeted"]
+[connection signal="attack" from="Ducks/Duck2" to="." method="_on_duck_attack"]
+[connection signal="defend" from="Ducks/Duck2" to="." method="_on_duck_defend"]
+[connection signal="targeted" from="Ducks/Duck2" to="." method="_on_duck_targeted"]
+[connection signal="attack" from="Ducks/Duck3" to="." method="_on_duck_attack"]
+[connection signal="defend" from="Ducks/Duck3" to="." method="_on_duck_defend"]
+[connection signal="targeted" from="Ducks/Duck3" to="." method="_on_duck_targeted"]
+[connection signal="targeted" from="Enemies/Enemy1" to="." method="_on_enemy_targeted"]
+[connection signal="targeted" from="Enemies/Enemy2" to="." method="_on_enemy_targeted"]
+[connection signal="targeted" from="Enemies/Enemy3" to="." method="_on_enemy_targeted"]
+[connection signal="targeted" from="Enemies/Minion1" to="." method="_on_enemy_targeted"]
+[connection signal="targeted" from="Enemies/Minion2" to="." method="_on_enemy_targeted"]
+[connection signal="targeted" from="Enemies/Minion3" to="." method="_on_enemy_targeted"]
+[connection signal="end_player_turn" from="EndTurn" to="." method="_on_end_turn"]
+[connection signal="end_block" from="EndBlock" to="." method="_on_end_block"]
+
+[editable path="Ducks"]
+[editable path="Enemies"]

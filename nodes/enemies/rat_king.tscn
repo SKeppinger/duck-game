@@ -1,10 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://c241pyr5vv84s"]
+[gd_scene load_steps=10 format=3 uid="uid://t5nvdbw1rfme"]
 
-[ext_resource type="Texture2D" uid="uid://c420kvmehsw4x" path="res://assets/temporary/200x200.png" id="1_u3p5i"]
-[ext_resource type="PackedScene" uid="uid://6svp7h6iym6i" path="res://nodes/ui/small_info.tscn" id="2_5wpj0"]
-[ext_resource type="Script" uid="uid://dv2kfhb1jru78" path="res://scripts/enemy.gd" id="2_ywbfa"]
-[ext_resource type="Texture2D" uid="uid://d3fky1igtjt34" path="res://assets/PLACEHOLDERS/health_bar_small.png" id="4_rbcqw"]
-[ext_resource type="Texture2D" uid="uid://bp6mkn7yuqvdu" path="res://assets/temporary/64x64.png" id="4_rih5s"]
+[ext_resource type="Texture2D" uid="uid://dgej1ln8317ra" path="res://assets/PLACEHOLDERS/rat_king.png" id="1_u1tti"]
+[ext_resource type="Script" uid="uid://dv2kfhb1jru78" path="res://scripts/enemy.gd" id="2_e3uo8"]
+[ext_resource type="PackedScene" uid="uid://6svp7h6iym6i" path="res://nodes/ui/small_info.tscn" id="3_itbdf"]
+[ext_resource type="Texture2D" uid="uid://d3fky1igtjt34" path="res://assets/PLACEHOLDERS/health_bar_small.png" id="4_e3uo8"]
+[ext_resource type="Texture2D" uid="uid://bp6mkn7yuqvdu" path="res://assets/temporary/64x64.png" id="4_tdn15"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rih5s"]
 font_size = 12
@@ -21,14 +21,16 @@ font_color = Color(0, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_ciylv"]
 font_color = Color(0, 0, 0, 1)
 
-[node name="Enemy" type="TextureRect"]
+[node name="RatKing" type="TextureRect"]
 offset_right = 200.0
 offset_bottom = 200.0
-texture = ExtResource("1_u3p5i")
+texture = ExtResource("1_u1tti")
 expand_mode = 1
-script = ExtResource("2_ywbfa")
+script = ExtResource("2_e3uo8")
+HP = 56
+enemy_name = "Rat King"
 
-[node name="EnemyInfo" parent="." instance=ExtResource("2_5wpj0")]
+[node name="EnemyInfo" parent="." instance=ExtResource("3_itbdf")]
 z_index = 1
 layout_mode = 1
 anchors_preset = 7
@@ -42,7 +44,7 @@ offset_right = 78.0
 offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 0
-texture = ExtResource("4_rbcqw")
+texture = ExtResource("4_e3uo8")
 expand_mode = 1
 
 [node name="Name" type="Label" parent="EnemyInfo"]
@@ -93,7 +95,7 @@ offset_top = 1.0
 offset_right = 54.0
 offset_bottom = 33.0
 grow_vertical = 0
-texture = ExtResource("4_rih5s")
+texture = ExtResource("4_tdn15")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="Attack"]
@@ -137,7 +139,7 @@ offset_top = 1.0
 offset_right = 88.0
 offset_bottom = 33.0
 grow_vertical = 0
-texture = ExtResource("4_rih5s")
+texture = ExtResource("4_tdn15")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="Defense"]

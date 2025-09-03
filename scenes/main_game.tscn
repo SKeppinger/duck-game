@@ -2,8 +2,8 @@
 
 [ext_resource type="Theme" uid="uid://b8y45r78rkna5" path="res://nodes/themes/gamewidetheme.tres" id="1_5cypo"]
 [ext_resource type="Script" uid="uid://cveeq18405o4s" path="res://scripts/game_controller.gd" id="1_s3esy"]
-[ext_resource type="PackedScene" uid="uid://hkuhdy33ucwm" path="res://scenes/encounters/test_encounter.tscn" id="2_ipu61"]
 [ext_resource type="PackedScene" uid="uid://c5exuhggdhxa8" path="res://nodes/ducks/wizard.tscn" id="3_ipu61"]
+[ext_resource type="PackedScene" uid="uid://bgi24xhdop1oq" path="res://scenes/encounters/rat_encounter.tscn" id="3_wjob3"]
 [ext_resource type="PackedScene" uid="uid://bdgn6q1o1f6xd" path="res://nodes/ducks/barbarian.tscn" id="4_ygxny"]
 [ext_resource type="PackedScene" uid="uid://cgliuh4ml3cgr" path="res://nodes/ducks/bard.tscn" id="5_wi4c7"]
 [ext_resource type="PackedScene" uid="uid://dy0esukimc0bn" path="res://nodes/cards/wizard/magic_missile.tscn" id="7_wi4c7"]
@@ -23,7 +23,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_5cypo")
 script = ExtResource("1_s3esy")
-encounter = ExtResource("2_ipu61")
+encounter = ExtResource("3_wjob3")
 ducks = [NodePath("Barbarian"), NodePath("Wizard"), NodePath("Bard")]
 
 [node name="Barbarian" parent="." instance=ExtResource("4_ygxny")]

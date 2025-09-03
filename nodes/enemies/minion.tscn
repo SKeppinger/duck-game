@@ -1,10 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://c241pyr5vv84s"]
+[gd_scene load_steps=9 format=3 uid="uid://cjp66rxrnshb8"]
 
-[ext_resource type="Texture2D" uid="uid://c420kvmehsw4x" path="res://assets/temporary/200x200.png" id="1_u3p5i"]
-[ext_resource type="PackedScene" uid="uid://6svp7h6iym6i" path="res://nodes/ui/small_info.tscn" id="2_5wpj0"]
-[ext_resource type="Script" uid="uid://dv2kfhb1jru78" path="res://scripts/enemy.gd" id="2_ywbfa"]
-[ext_resource type="Texture2D" uid="uid://d3fky1igtjt34" path="res://assets/PLACEHOLDERS/health_bar_small.png" id="4_rbcqw"]
-[ext_resource type="Texture2D" uid="uid://bp6mkn7yuqvdu" path="res://assets/temporary/64x64.png" id="4_rih5s"]
+[ext_resource type="Texture2D" uid="uid://c420kvmehsw4x" path="res://assets/temporary/200x200.png" id="1_h0vvu"]
+[ext_resource type="Script" uid="uid://dv2kfhb1jru78" path="res://scripts/enemy.gd" id="2_cj5mk"]
+[ext_resource type="PackedScene" uid="uid://6svp7h6iym6i" path="res://nodes/ui/small_info.tscn" id="3_u4o58"]
+[ext_resource type="Texture2D" uid="uid://d3fky1igtjt34" path="res://assets/PLACEHOLDERS/health_bar_small.png" id="4_3kn6c"]
+[ext_resource type="Texture2D" uid="uid://bp6mkn7yuqvdu" path="res://assets/temporary/64x64.png" id="5_hlcbk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rih5s"]
 font_size = 12
@@ -14,21 +14,17 @@ font_color = Color(0, 0, 0, 1)
 font_size = 10
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_j22ad"]
-font_size = 8
-font_color = Color(0, 0, 0, 1)
-
 [sub_resource type="LabelSettings" id="LabelSettings_ciylv"]
 font_color = Color(0, 0, 0, 1)
 
 [node name="Enemy" type="TextureRect"]
 offset_right = 200.0
 offset_bottom = 200.0
-texture = ExtResource("1_u3p5i")
+texture = ExtResource("1_h0vvu")
 expand_mode = 1
-script = ExtResource("2_ywbfa")
+script = ExtResource("2_cj5mk")
 
-[node name="EnemyInfo" parent="." instance=ExtResource("2_5wpj0")]
+[node name="EnemyInfo" parent="." instance=ExtResource("3_u4o58")]
 z_index = 1
 layout_mode = 1
 anchors_preset = 7
@@ -42,7 +38,7 @@ offset_right = 78.0
 offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 0
-texture = ExtResource("4_rbcqw")
+texture = ExtResource("4_3kn6c")
 expand_mode = 1
 
 [node name="Name" type="Label" parent="EnemyInfo"]
@@ -82,7 +78,6 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Attack" type="TextureRect" parent="."]
-visible = false
 z_index = 1
 layout_mode = 1
 anchors_preset = 2
@@ -93,21 +88,8 @@ offset_top = 1.0
 offset_right = 54.0
 offset_bottom = 33.0
 grow_vertical = 0
-texture = ExtResource("4_rih5s")
+texture = ExtResource("5_hlcbk")
 expand_mode = 1
-
-[node name="Label" type="Label" parent="Attack"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -21.0
-offset_right = 21.0
-offset_bottom = 17.0
-grow_horizontal = 2
-text = "ATK"
-label_settings = SubResource("LabelSettings_j22ad")
-horizontal_alignment = 1
 
 [node name="Num" type="Label" parent="Attack"]
 layout_mode = 1
@@ -137,21 +119,8 @@ offset_top = 1.0
 offset_right = 88.0
 offset_bottom = 33.0
 grow_vertical = 0
-texture = ExtResource("4_rih5s")
+texture = ExtResource("5_hlcbk")
 expand_mode = 1
-
-[node name="Label" type="Label" parent="Defense"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -21.0
-offset_right = 21.0
-offset_bottom = 17.0
-grow_horizontal = 2
-text = "DEF"
-label_settings = SubResource("LabelSettings_j22ad")
-horizontal_alignment = 1
 
 [node name="Num" type="Label" parent="Defense"]
 layout_mode = 1

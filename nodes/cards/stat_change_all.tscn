@@ -1,0 +1,121 @@
+[gd_scene load_steps=9 format=3 uid="uid://b1oyjjruakvuu"]
+
+[ext_resource type="Theme" uid="uid://b8y45r78rkna5" path="res://nodes/themes/gamewidetheme.tres" id="1_of3lb"]
+[ext_resource type="Texture2D" uid="uid://bnny1vkc1bfv0" path="res://assets/temporary/320x448.png" id="2_nqi4c"]
+[ext_resource type="Script" uid="uid://bcwelnbqtovo2" path="res://scripts/stat_change_all.gd" id="3_of3lb"]
+[ext_resource type="Texture2D" uid="uid://bp6mkn7yuqvdu" path="res://assets/temporary/64x64.png" id="4_n2kku"]
+[ext_resource type="Texture2D" uid="uid://ddfbb0snmihv0" path="res://assets/icons/art_fireball.png" id="5_6ec8j"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_njcsl"]
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1fprh"]
+font_size = 60
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_y3cwb"]
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[node name="StatChangeAll" type="TextureRect"]
+offset_right = 320.0
+offset_bottom = 448.0
+theme = ExtResource("1_of3lb")
+texture = ExtResource("2_nqi4c")
+stretch_mode = 4
+script = ExtResource("3_of3lb")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -56.0
+offset_top = 30.0
+offset_right = 137.0
+offset_bottom = 68.0
+grow_horizontal = 2
+text = "Card Name"
+label_settings = SubResource("LabelSettings_njcsl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cost" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 22.3333
+offset_top = 30.3333
+offset_right = 88.3333
+offset_bottom = 64.3333
+
+[node name="ManaSymbol" type="TextureRect" parent="Cost"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_n2kku")
+
+[node name="Amount" type="TextureRect" parent="Cost"]
+layout_mode = 0
+offset_left = 40.0
+offset_right = 104.0
+offset_bottom = 64.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_n2kku")
+
+[node name="Label" type="Label" parent="Cost/Amount"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+label_settings = SubResource("LabelSettings_1fprh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Art" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -149.0
+offset_right = 108.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_6ec8j")
+expand_mode = 1
+
+[node name="Description" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -139.0
+offset_top = -162.0
+offset_right = 139.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Here is some text down here. This is what the card does."
+label_settings = SubResource("LabelSettings_y3cwb")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

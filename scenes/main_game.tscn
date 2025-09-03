@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dxrxt02atigj5"]
+[gd_scene load_steps=14 format=3 uid="uid://dxrxt02atigj5"]
 
 [ext_resource type="Theme" uid="uid://b8y45r78rkna5" path="res://nodes/themes/gamewidetheme.tres" id="1_5cypo"]
 [ext_resource type="Script" uid="uid://cveeq18405o4s" path="res://scripts/game_controller.gd" id="1_s3esy"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://bpk7wn42is87d" path="res://nodes/cards/wizard/fireball.tscn" id="9_2l77h"]
 [ext_resource type="PackedScene" uid="uid://dpx2ugwn7fpen" path="res://nodes/cards/barbarian/hit_the_gym.tscn" id="9_nqdth"]
 [ext_resource type="PackedScene" uid="uid://csdss2nfcilxr" path="res://nodes/cards/barbarian/body_slam.tscn" id="10_nqdth"]
+[ext_resource type="PackedScene" uid="uid://by75tdr8yd7i4" path="res://nodes/cards/bard/duck_song.tscn" id="12_o6v7o"]
+[ext_resource type="PackedScene" uid="uid://chhwakjqr0ydu" path="res://nodes/cards/bard/battle_quack.tscn" id="13_wjob3"]
 
 [node name="MainGame" type="Control" node_paths=PackedStringArray("ducks")]
 layout_mode = 3
@@ -48,5 +50,13 @@ visible = false
 visible = false
 
 [node name="HitTheGym" parent="Deck" instance=ExtResource("9_nqdth")]
+visible = false
 
 [node name="BodySlam" parent="Deck" instance=ExtResource("10_nqdth")]
+visible = false
+
+[node name="DuckSong" parent="Deck" instance=ExtResource("12_o6v7o")]
+visible = false
+
+[node name="BattleQuack" parent="Deck" instance=ExtResource("13_wjob3")]
+visible = false

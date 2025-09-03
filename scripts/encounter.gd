@@ -94,6 +94,9 @@ func _process(_delta):
 						target_phase_started = true
 		# End of player turn
 		states.EndPlayer:
+			for duck in ducks:
+				duck.reset_ATK()
+				duck.reset_DEF()
 			action_phase_started = false
 			for card in hand.get_children():
 				discard(card)
@@ -142,6 +145,9 @@ func _process(_delta):
 			state = states.EndEnemy
 		# End of enemy turn
 		states.EndEnemy:
+			for enemy in enemies:
+				enemy.reset_ATK()
+				enemy.reset_DEF()
 			state = states.StartPlayer
 
 ## Create an encounter
@@ -176,6 +182,8 @@ func init_player(sent_ducks, sent_deck):
 			card.damage_all.connect(damage_all)
 			if card is Fireball:
 				card.damage_all_ducks.connect(damage_all_ducks)
+		if card is StatChangeAll:
+			card.stat_change_all.connect(stat_change_all)
 	player_deck.shuffle()
 
 ## Draw Cards
@@ -277,6 +285,15 @@ func empty_mana():
 	for i in range(len(player_mana)):
 		player_mana.pop_front()
 	mana_box.update_display(player_mana)
+
+## Stat Change All
+func stat_change_all(target_type, stat, amount):
+	if target_type == References.TargetType.Duck:
+		for duck in ducks:
+			duck.change_stat(stat, amount)
+	if target_type == References.TargetType.Enemy:
+		for enemy in enemies:
+			enemy.change_stat(stat, amount)
 
 ## Damage All
 func damage_all(damage, reducible):

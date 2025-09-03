@@ -71,6 +71,7 @@ offset_right = -123.0
 layout_mode = 1
 
 [node name="Deck" parent="." instance=ExtResource("7_56648")]
+visible = false
 layout_mode = 1
 
 [node name="Label" type="Label" parent="Deck"]
@@ -92,6 +93,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Discard" parent="." instance=ExtResource("7_56648")]
+visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0

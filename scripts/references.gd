@@ -10,13 +10,16 @@ enum Effect {Shield}
 enum CardType {Event, Upgrade}
 
 ## Card Traits
-enum Trait {Spell, Weapon, Artifact, Armor, Ability, Tactic}
+enum Trait {Spell, Weapon, Artifact, Armor, Ability, Tactic, Cheer}
 
 ## Target Types
 enum TargetType {None, Duck, Enemy}
 
 ## Mana Colors
 enum ManaColor {Red, Blue, Purple, Neutral}
+
+## Stats
+enum Stat {ATK, DEF}
 
 ## Encounter States
 enum EncounterState {StartPlayer, Draw, Generate, PlayerAction, PlayerAttackTarget, PlayerCardTarget, EndPlayer, 

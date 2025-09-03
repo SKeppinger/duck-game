@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b06473q8e4fqe"]
+[gd_scene load_steps=18 format=3 uid="uid://b06473q8e4fqe"]
 
 [ext_resource type="PackedScene" uid="uid://bukopaeam3g1i" path="res://nodes/cards/barbarian/test_barbarian_card.tscn" id="1_n86g5"]
 [ext_resource type="PackedScene" uid="uid://csdss2nfcilxr" path="res://nodes/cards/barbarian/body_slam.tscn" id="2_up5tx"]
@@ -14,7 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://b4pvijcymt12h" path="res://nodes/cards/add_effect.tscn" id="12_vlv53"]
 [ext_resource type="PackedScene" uid="uid://cwn7ryk8wk5hp" path="res://nodes/cards/add_effect_self.tscn" id="13_rdw61"]
 [ext_resource type="PackedScene" uid="uid://dumse6u2lr5ny" path="res://nodes/cards/damage_all.tscn" id="14_86uam"]
+[ext_resource type="PackedScene" uid="uid://by75tdr8yd7i4" path="res://nodes/cards/bard/duck_song.tscn" id="14_up5tx"]
 [ext_resource type="PackedScene" uid="uid://cmyexw3ixm8cs" path="res://nodes/cards/single_target_damage.tscn" id="15_4bv8g"]
+[ext_resource type="PackedScene" uid="uid://chhwakjqr0ydu" path="res://nodes/cards/bard/battle_quack.tscn" id="15_dic0t"]
 
 [node name="CardEditing" type="Control"]
 layout_mode = 3
@@ -59,9 +61,11 @@ layout_mode = 2
 
 [node name="BodySlam" parent="VFlowContainer/Barbarian" instance=ExtResource("2_up5tx")]
 layout_mode = 2
+traits = Array[int]([])
 
 [node name="HitTheGym" parent="VFlowContainer/Barbarian" instance=ExtResource("3_dic0t")]
 layout_mode = 2
+traits = Array[int]([])
 
 [node name="Wizard" type="VFlowContainer" parent="VFlowContainer"]
 layout_mode = 2
@@ -71,17 +75,26 @@ layout_mode = 2
 
 [node name="MagicMissile" parent="VFlowContainer/Wizard" instance=ExtResource("6_asjhd")]
 layout_mode = 2
+traits = Array[int]([])
 
 [node name="MageArmor" parent="VFlowContainer/Wizard" instance=ExtResource("7_pw6on")]
 layout_mode = 2
+traits = Array[int]([])
 
 [node name="Fireball" parent="VFlowContainer/Wizard" instance=ExtResource("8_sf6rx")]
 layout_mode = 2
+traits = Array[int]([])
 
 [node name="Bard" type="VFlowContainer" parent="VFlowContainer"]
 layout_mode = 2
 
 [node name="BardCard" parent="VFlowContainer/Bard" instance=ExtResource("4_nxlt5")]
+layout_mode = 2
+
+[node name="DuckSong" parent="VFlowContainer/Bard" instance=ExtResource("14_up5tx")]
+layout_mode = 2
+
+[node name="BattleQuack" parent="VFlowContainer/Bard" instance=ExtResource("15_dic0t")]
 layout_mode = 2
 
 [node name="Enemy" type="VFlowContainer" parent="VFlowContainer"]

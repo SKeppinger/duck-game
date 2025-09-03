@@ -41,6 +41,22 @@ func _on_click(event):
 func attack_target(target, reducible=true):
 	target.damage(ATK_actual, reducible)
 
+## Change Stat
+func change_stat(stat, amount):
+	match stat:
+		References.Stat.ATK:
+			ATK_actual += amount
+		References.Stat.DEF:
+			DEF_actual += amount
+	update_labels()
+
+## Heal
+func heal(amount):
+	HP_actual += amount
+	if HP_actual > HP:
+		HP_actual = HP
+	update_labels()
+
 ## Damage
 func damage(dmg, reducible=true):
 	if reducible:

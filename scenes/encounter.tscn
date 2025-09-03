@@ -29,6 +29,7 @@ encounter_deck = [null, null, null, null]
 neutral_mana = ExtResource("3_mw7nh")
 
 [node name="RunInfo" parent="." instance=ExtResource("1_2dnca")]
+visible = false
 layout_mode = 0
 anchors_preset = 0
 anchor_left = 0.0
@@ -54,6 +55,7 @@ offset_right = -123.0
 layout_mode = 1
 
 [node name="Deck" parent="." instance=ExtResource("6_ip0ee")]
+visible = false
 layout_mode = 1
 
 [node name="Label" type="Label" parent="Deck"]
@@ -75,6 +77,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Discard" parent="." instance=ExtResource("6_ip0ee")]
+visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0

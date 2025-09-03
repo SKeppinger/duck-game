@@ -32,7 +32,7 @@ signal attack # A signal to emit to the encounter script when the duck attacks
 signal defend # A signal to emit to the encounter script when the duck defends
 signal died # A signal to emit when the duck dies
 var effects: Array[References.Effect] # The duck's currently active buffs and debuffs
-var upgrades: Array[Upgrade] # The duck's currentyl active upgrades
+var upgrades: Array[Upgrade] # The duck's currently active upgrades
 var can_target = false # Whether the duck can currently be targeted
 var can_attack = false # Whether the duck can currently attack
 var can_defend = false # Whether the duck can currently defend
@@ -112,6 +112,22 @@ func _on_defense_clicked(event):
 func attack_target(target, reducible=true):
 	target.damage(ATK_actual, reducible)
 	tapped = true
+
+## Change Stat
+func change_stat(stat, amount):
+	match stat:
+		References.Stat.ATK:
+			ATK_actual += amount
+		References.Stat.DEF:
+			DEF_actual += amount
+	update_labels()
+
+## Heal
+func heal(amount):
+	HP_actual += amount
+	if HP_actual > HP:
+		HP_actual = HP
+	update_labels()
 
 ## Damage
 func damage(dmg, reducible=true):

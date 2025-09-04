@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cp1kjrha5inwt"
+path="res://.godot/imported/Swords Colliding 3.wav-3e7f5f5e4c57e192b77523aa209f07fe.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Swords Colliding 3.wav"
+dest_files=["res://.godot/imported/Swords Colliding 3.wav-3e7f5f5e4c57e192b77523aa209f07fe.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

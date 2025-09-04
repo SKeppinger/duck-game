@@ -1,6 +1,12 @@
 extends Control
 class_name Encounter
 
+## Sounds
+var bgm = preload("res://assets/PLACEHOLDERS/background music.wav")
+var attack = preload("res://assets/sounds/attack.wav")
+var block = preload("res://assets/sounds/block.wav")
+var cast = preload("res://assets/sounds/cast.wav")
+
 ## Exported Variables
 @export var enemy_scenes: Array[PackedScene] # The enemies in the encounter
 @export var encounter_deck: Array[EnemyCard] # The encounter deck
@@ -19,6 +25,8 @@ class_name Encounter
 @onready var mana_pips = $ManaPips
 @onready var end_button = $EndTurn
 @onready var end_block_button = $EndBlock
+@onready var music_player = $MusicPlayer
+@onready var sfx_player = $SoundPlayer
 
 ## Variables from Main Game
 var ducks: Array[Duck] # The player's duck team
@@ -48,6 +56,9 @@ var facing_damage = 0 # The amount of blockable damage the duck is facing
 
 ## Process (Main Gameplay Loop)
 func _process(_delta):
+	if not music_player.is_playing():
+		music_player.stream = bgm
+		music_player.play()
 	match state:
 		## PLAYER TURN
 		# Start of player turn
@@ -240,6 +251,8 @@ func play(card):
 			caster = null
 			return
 	# Continue if the player has enough mana to play the card
+	sfx_player.stream = cast
+	sfx_player.play()
 	for color in mana_to_pay:
 		remove_mana(color)
 	if card.target == References.TargetType.None:
@@ -358,6 +371,8 @@ func _on_duck_attack(duck):
 
 ## On Duck Defend
 func _on_duck_defend(duck):
+	sfx_player.stream = block
+	sfx_player.play()
 	current_enemy_target = duck
 	for d in ducks:
 		d.end_block_phase()
@@ -377,6 +392,8 @@ func _on_duck_defend(duck):
 ## On Enemy Targeted
 func _on_enemy_targeted(enemy):
 	if state == states.PlayerAttackTarget:
+		sfx_player.stream = attack
+		sfx_player.play()
 		attacker.attack_target(enemy)
 		attacker = null
 		target_phase_started = false
@@ -407,6 +424,8 @@ func _on_end_turn():
 
 ## On End Block
 func _on_end_block():
+	sfx_player.stream = attack
+	sfx_player.play()
 	for duck in ducks:
 		duck.end_block_phase()
 	block_phase_started = false

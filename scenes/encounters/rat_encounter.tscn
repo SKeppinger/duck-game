@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bgi24xhdop1oq"]
+[gd_scene load_steps=20 format=3 uid="uid://bgi24xhdop1oq"]
 
 [ext_resource type="Theme" uid="uid://b8y45r78rkna5" path="res://nodes/themes/gamewidetheme.tres" id="1_8etis"]
 [ext_resource type="Script" uid="uid://ctqsnaolrbnfo" path="res://scripts/encounter.gd" id="2_icdbt"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cwv734p5k7ppa" path="res://nodes/cards/enemy/gnaw.tscn" id="15_8etis"]
 [ext_resource type="PackedScene" uid="uid://c0j3j3q82ji0d" path="res://nodes/cards/enemy/bite.tscn" id="16_icdbt"]
 [ext_resource type="PackedScene" uid="uid://bfvs3oq3q1nws" path="res://nodes/cards/enemy/squeak.tscn" id="17_c06xw"]
+[ext_resource type="AudioStream" uid="uid://0r573syb3yua" path="res://assets/PLACEHOLDERS/background music.wav" id="18_f0yp0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kivw1"]
 font_size = 48
@@ -260,6 +261,13 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="ManaPips" type="Node" parent="."]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_f0yp0")
+volume_db = -10.0
+autoplay = true
+
+[node name="SoundPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="attack" from="Ducks/Duck1" to="." method="_on_duck_attack"]
 [connection signal="defend" from="Ducks/Duck1" to="." method="_on_duck_defend"]
